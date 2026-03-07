@@ -33,15 +33,34 @@ export default function AdminMarketplace() {
     fetchExperts();
   }, []);
 
-  const toggleExpertStatus = (expert) => {
+  const toggleExpertStatus = async (expert) => {
     const newOnline = !expert.isLive;
     // Update local state optimistically
+    const originalExperts = experts;
     setExperts(experts.map(e => 
       e.id === expert.id ? { ...e, isLive: newOnline } : e
     ));
-    // Emit socket event
-    emitAstrologerStatus(expert.id, newOnline);
-    // TODO: Also update in database via API
+    
+    try {
+      // Update database via API
+      const response = await fetch('/api/astrologer/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ astrologerId: expert.id, online: newOnline }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to update status');
+      }
+      
+      // Emit socket event
+      emitAstrologerStatus(expert.id, newOnline);
+    } catch (error) {
+      console.error('Failed to update astrologer status:', error);
+      // Revert optimistic update
+      setExperts(originalExperts);
+      alert('Failed to update astrologer status. Please try again.');
+    }
   };
 
   const addTickerMessage = () => {

@@ -1,5 +1,3 @@
-// AstraVeda Sovereign Database Schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -25,10 +23,38 @@ model ApiKey {
   id         Int      @id @default(autoincrement())
   key        String   @unique
   identityId Int
-  identity   Identity @relation(fields: [identityId], references: [id])
   tier       String   @default("SOVEREIGN_ELITE")
   isActive   Boolean  @default(true)
   createdAt  DateTime @default(now())
+  identity   Identity @relation(fields: [identityId], references: [id])
 
   @@map("api_keys")
+}
+
+model Astrologer {
+  id                     String   @id @default(uuid())
+  name                   String
+  bio                    String?
+  avatar_url             String?
+  expertise              String[]
+  languages              String[]
+  experience_years       Int
+  price_per_minute       Decimal  @db.Decimal(10, 2)
+  price_per_chat_minute  Decimal? @db.Decimal(10, 2)
+  price_per_call_minute  Decimal? @db.Decimal(10, 2)
+  price_per_video_minute Decimal? @db.Decimal(10, 2)
+  is_online              Boolean  @default(false)
+  is_busy                Boolean  @default(false)
+  status                 String?  @default("OFFLINE")
+  is_verified            Boolean  @default(false)
+  rating                 Float?   @default(0.0)
+  total_ratings          Int?     @default(0)
+  response_time_avg      Int?     @default(0)
+  completion_rate        Float?   @default(0.0)
+  is_blocked             Boolean  @default(false)
+  last_active            DateTime?
+  created_at             DateTime @default(now())
+  updated_at             DateTime @updatedAt
+
+  @@map("astrologers")
 }
