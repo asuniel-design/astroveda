@@ -1,10 +1,31 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { formatCurrency } from '../lib/currency';
+import { formatPerMinute } from '../lib/pricing';
 import MarketingTicker from '../components/MarketingTicker';
 
 export default function AstroVedaHome() {
   const [birthData, setBirthData] = useState({ date: '', time: '', city: '' });
+  const [experts, setExperts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchExperts = async () => {
+      try {
+        const res = await fetch('/api/experts/list');
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
+        const data = await res.json();
+        setExperts(data.experts || []);
+      } catch (err) {
+        console.error('Failed to fetch experts:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchExperts();
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FBFBFB] flex flex-col items-center">
@@ -35,7 +56,7 @@ export default function AstroVedaHome() {
           </p>
           
           {/* User Onboarding Flow: Birth Details */}
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 space-y-4 max-w-md">
+          <div className="bg-white/40 backdrop-blur-lg p-8 rounded-xl shadow-sm border border-gold/20 space-y-4 max-w-md">
             <h3 className="font-serif text-xl text-gray-800 border-b border-[#BFA15C]/30 pb-2 inline-block">Generate Your Chart</h3>
             <div className="grid grid-cols-2 gap-4 pt-2">
               <input type="date" className="p-3 border border-gray-200 rounded text-sm outline-none focus:border-[#BFA15C] transition" />
@@ -65,47 +86,92 @@ export default function AstroVedaHome() {
         <div className="max-w-6xl mx-auto px-6 text-center space-y-12">
           <h2 className="text-3xl font-serif text-gray-900">Connect with an Expert</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Consultant Card 1 */}
-            <div className="flex bg-white/40 backdrop-blur-lg rounded-xl overflow-hidden border border-gold/20 text-left hover:shadow-md transition">
-              <div className="w-1/3 bg-gray-200 flex items-center justify-center text-xs text-gray-400 font-serif text-center p-4">
-                [ US Home Office Asset 1 ]
-              </div>
-              <div className="p-6 w-2/3 flex flex-col justify-center">
-                <h4 className="font-serif text-xl text-gray-900">Dr. Alisha Rao</h4>
-                <p className="text-xs text-[#BFA15C] uppercase tracking-widest mb-4">Vedic Astrologer</p>
-                <p className="text-sm text-gray-600 mb-4 line-clamp-2">Specializing in career trajectories and relationship compatibility using traditional Parashari techniques.</p>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-lg font-serif text-gray-900">{formatCurrency(49)}</span>
-                  <span className="text-xs text-gray-500">per session</span>
-                </div>
-                <button className="text-xs font-semibold tracking-widest border-b border-gray-900 pb-1 w-fit hover:text-[#BFA15C] hover:border-[#BFA15C] transition shimmer-gold">
-                  Start Consultation
-                </button>
-              </div>
+          {loading ? (
+            <p className="text-gray-500">Loading astrologers...</p>
+          ) : error ? (
+            <p className="text-red-500">Failed to load astrologers: {error}</p>
+          ) : experts.length === 0 ? (
+            <p className="text-gray-500">No astrologers available at the moment.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {experts.map(expert => (
+                <ExpertCard key={expert.id} expert={expert} />
+              ))}
             </div>
-
-            {/* Consultant Card 2 */}
-            <div className="flex bg-white/40 backdrop-blur-lg rounded-xl overflow-hidden border border-gold/20 text-left hover:shadow-md transition">
-              <div className="w-1/3 bg-gray-200 flex items-center justify-center text-xs text-gray-400 font-serif text-center p-4">
-                [ US Home Office Asset 2 ]
-              </div>
-              <div className="p-6 w-2/3 flex flex-col justify-center">
-                <h4 className="font-serif text-xl text-gray-900">Marcus Vance</h4>
-                <p className="text-xs text-[#BFA15C] uppercase tracking-widest mb-4">Tarot & Ephemeris</p>
-                <p className="text-sm text-gray-600 mb-4 line-clamp-2">Combining Swiss Ephemeris data with intuitive readings from a serene, modern perspective.</p>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-lg font-serif text-gray-900">{formatCurrency(59)}</span>
-                  <span className="text-xs text-gray-500">per session</span>
-                </div>
-                <button className="text-xs font-semibold tracking-widest border-b border-gray-900 pb-1 w-fit hover:text-[#BFA15C] hover:border-[#BFA15C] transition shimmer-gold">
-                  Start Consultation
-                </button>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </section>
+    </div>
+  );
+}
+
+function ExpertCard({ expert }) {
+  const { name, specialty, image, isVerified, metrics, isLive, raw } = expert;
+  const { experience_years, rating, reviews } = metrics;
+  
+  return (
+    <div className="flex flex-col bg-white/40 backdrop-blur-lg rounded-xl overflow-hidden border border-gold/20 text-left hover:shadow-md transition group">
+      {/* Image & Status */}
+      <div className="relative h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
+        <img 
+          src={image} 
+          alt={name}
+          className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+        />
+        {/* Online Pulse Indicator */}
+        {isLive && (
+          <div className="absolute top-3 right-3 flex items-center">
+            <div className="relative">
+              <div className="absolute w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75"></div>
+              <div className="relative w-3 h-3 bg-green-500 rounded-full"></div>
+            </div>
+            <span className="ml-2 text-xs text-green-800 font-medium">Live</span>
+          </div>
+        )}
+        {/* Experience Badge */}
+        {experience_years > 0 && (
+          <div className="absolute bottom-3 left-3 bg-[#BFA15C] text-white text-xs font-bold px-2 py-1 rounded-full shadow">
+            {experience_years} years
+          </div>
+        )}
+        {/* Verified Badge */}
+        {isVerified && (
+          <div className="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow">
+            Verified
+          </div>
+        )}
+      </div>
+      
+      {/* Details */}
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="flex items-start justify-between mb-2">
+          <h4 className="font-serif text-xl text-gray-900 pr-2">{name}</h4>
+          {/* Rating */}
+          <div className="flex items-center text-sm text-gray-600">
+            <span className="text-[#BFA15C] font-bold">{rating}</span>
+            <span className="text-gray-400 ml-1">({reviews})</span>
+          </div>
+        </div>
+        
+        <p className="text-xs text-[#BFA15C] uppercase tracking-widest mb-3">{specialty}</p>
+        <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+          {expert.bio || 'Expert astrologer with deep knowledge in Vedic astrology.'}
+        </p>
+        
+        <div className="mt-auto">
+          {/* Dynamic Pricing */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-lg font-serif text-gray-900">
+              {formatPerMinute(raw.baseINR, raw.currency)}
+            </span>
+            <span className="text-xs text-gray-500">per minute</span>
+          </div>
+          
+          <button className="w-full text-xs font-semibold tracking-widest border border-gray-300 text-gray-800 py-2 rounded hover:border-[#BFA15C] hover:text-[#BFA15C] transition shimmer-gold">
+            Start Consultation
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
