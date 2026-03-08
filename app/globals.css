@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0b0a1c;
+}
+
+html, body, #__next { height: 100%; }
+body { @apply bg-cosmic-purple text-white antialiased; }
+
+
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: saturate(140%) blur(18px);
+  -webkit-backdrop-filter: saturate(140%) blur(18px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-2xl px-6 py-3 font-semibold text-black bg-gradient-to-r from-gold to-yellow-400 shadow-glow hover:shadow-[0_0_30px_rgba(250,204,21,0.45)] transition;
+}
+
+.card {
+  @apply glass rounded-2xl border border-white/10;
+}

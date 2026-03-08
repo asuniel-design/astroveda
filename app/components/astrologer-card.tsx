@@ -1,0 +1,42 @@
+"use client";
+import { motion } from 'framer-motion';
+
+type Props = {
+  astro: any;
+};
+
+export default function AstrologerCard({ astro }: Props) {
+  const online = astro.is_online;
+  return (
+    <motion.div whileHover={{ y: -4 }} className="card p-4 flex flex-col gap-3">
+      <div className="flex items-start gap-3">
+        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold/25 to-gold/10 flex items-center justify-center text-lg font-bold text-gold border border-gold/20">
+          {astro.name?.[0] || 'A'}
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2">
+            <h4 className="font-semibold text-white truncate">{astro.name}</h4>
+            {astro.is_verified && (
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold/20 text-gold border border-gold/30">Verified</span>
+            )}
+          </div>
+          <div className="text-xs text-white/60 flex items-center gap-2">
+            <span>★ {astro.rating?.toFixed?.(1) || '5.0'}</span>
+            <span className="text-white/30">•</span>
+            <span>{astro.languages?.join(' · ')}</span>
+          </div>
+        </div>
+        <span className={`text-[10px] px-2 py-0.5 rounded-full border ${online ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' : 'bg-white/5 text-white/50 border-white/10'}`}>{online ? 'ONLINE' : 'OFFLINE'}</span>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {(astro.expertise || []).slice(0,3).map((tag: string) => (
+          <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/70">{tag}</span>
+        ))}
+      </div>
+      <div className="mt-auto flex gap-2">
+        <button className="btn-primary w-full">💬 Chat Now</button>
+        <button className="glass px-3 rounded-xl border border-white/10">📞</button>
+      </div>
+    </motion.div>
+  );
+}
