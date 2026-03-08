@@ -6,55 +6,49 @@ datasource db {
   provider = "postgresql"
 }
 
-model Identity {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  place     String?
-  star      String?
-  reason    String?
-  status    String   @default("PENDING_PAYMENT")
-  createdAt DateTime @default(now())
-  apiKeys   ApiKey[]
-
-  @@map("identities")
-}
-
-model ApiKey {
-  id         Int      @id @default(autoincrement())
-  key        String   @unique
+model api_keys {
+  id         Int        @id @default(autoincrement())
+  key        String     @unique
   identityId Int
-  tier       String   @default("SOVEREIGN_ELITE")
-  isActive   Boolean  @default(true)
-  createdAt  DateTime @default(now())
-  identity   Identity @relation(fields: [identityId], references: [id])
-
-  @@map("api_keys")
+  tier       String     @default("SOVEREIGN_ELITE")
+  isActive   Boolean    @default(true)
+  createdAt  DateTime   @default(now())
+  identities identities @relation(fields: [identityId], references: [id])
 }
 
-model Astrologer {
-  id                     String   @id @default(uuid())
+model astrologers {
+  id                     String    @id
   name                   String
   bio                    String?
   avatar_url             String?
   expertise              String[]
   languages              String[]
   experience_years       Int
-  price_per_minute       Decimal  @db.Decimal(10, 2)
-  price_per_chat_minute  Decimal? @db.Decimal(10, 2)
-  price_per_call_minute  Decimal? @db.Decimal(10, 2)
-  price_per_video_minute Decimal? @db.Decimal(10, 2)
-  is_online              Boolean  @default(false)
-  is_busy                Boolean  @default(false)
-  status                 String?  @default("OFFLINE")
-  is_verified            Boolean  @default(false)
-  rating                 Float?   @default(0.0)
-  total_ratings          Int?     @default(0)
-  response_time_avg      Int?     @default(0)
-  completion_rate        Float?   @default(0.0)
-  is_blocked             Boolean  @default(false)
+  price_per_minute       Decimal   @db.Decimal(10, 2)
+  price_per_chat_minute  Decimal?  @db.Decimal(10, 2)
+  price_per_call_minute  Decimal?  @db.Decimal(10, 2)
+  price_per_video_minute Decimal?  @db.Decimal(10, 2)
+  is_online              Boolean   @default(false)
+  is_busy                Boolean   @default(false)
+  status                 String?   @default("OFFLINE")
+  is_verified            Boolean   @default(false)
+  rating                 Float?    @default(0.0)
+  total_ratings          Int?      @default(0)
+  response_time_avg      Int?      @default(0)
+  completion_rate        Float?    @default(0.0)
+  is_blocked             Boolean   @default(false)
+  created_at             DateTime  @default(now())
+  updated_at             DateTime
   last_active            DateTime?
-  created_at             DateTime @default(now())
-  updated_at             DateTime @updatedAt
+}
 
-  @@map("astrologers")
+model identities {
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  place     String?
+  star      String?
+  reason    String?
+  status    String     @default("PENDING_PAYMENT")
+  createdAt DateTime   @default(now())
+  api_keys  api_keys[]
 }
