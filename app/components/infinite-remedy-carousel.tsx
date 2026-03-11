@@ -81,7 +81,7 @@ export default function InfiniteRemedyCarousel() {
 
   return (
     <section className="mt-10">
-      <div className="flex items-end justify-between gap-4 mb-4">
+      <div className="flex items-end justify-between gap-4 mb-6">
         <div>
           <h2 className="text-xl font-semibold text-white">Remedies</h2>
           <p className="text-sm text-white/60">Infinite scroll — seamless loop (pauses on hover)</p>
@@ -105,7 +105,7 @@ export default function InfiniteRemedyCarousel() {
 
           <motion.div
             animate={controls}
-            className="flex gap-4 py-5 px-4 will-change-transform"
+            className="flex gap-4 py-7 md:py-8 px-4 md:px-6 will-change-transform items-center"
           >
             <div ref={trackRef} className="flex gap-4">
               {doubled.map((r, idx) => (

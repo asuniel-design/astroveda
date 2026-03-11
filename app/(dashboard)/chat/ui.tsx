@@ -60,14 +60,14 @@ export default function ChatClient() {
         </div>
       </div>
 
-      <div className="p-4 h-[52vh] overflow-auto space-y-3">
+      <div className="p-6 md:p-8 h-[56vh] overflow-auto space-y-4">
         {messages.map((m, idx) => (
           <div
             key={idx}
             className={
               m.role === "user"
-                ? "ml-auto max-w-[85%] rounded-2xl bg-gold text-black px-3 py-2 text-sm"
-                : "mr-auto max-w-[85%] rounded-2xl bg-white/5 border border-white/10 text-white px-3 py-2 text-sm"
+                ? "ml-auto max-w-[85%] rounded-2xl bg-gold text-black px-4 py-3 text-sm leading-relaxed"
+                : "mr-auto max-w-[85%] rounded-2xl bg-white/5 border border-white/10 text-white px-4 py-3 text-sm leading-relaxed"
             }
           >
             {m.text}
@@ -75,7 +75,7 @@ export default function ChatClient() {
         ))}
       </div>
 
-      <div className="p-3 border-t border-white/10 flex gap-2">
+      <div className="p-5 border-t border-white/10 flex gap-3 items-center">
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -83,12 +83,12 @@ export default function ChatClient() {
             if (e.key === "Enter") send();
           }}
           placeholder="Type your message..."
-          className="flex-1 rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-gold/40"
+          className="flex-1 h-12 rounded-full bg-white/5 border border-white/10 px-5 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-gold/40"
         />
         <button
           onClick={send}
           disabled={sending}
-          className="px-4 py-2 rounded-xl bg-gold text-black text-sm font-semibold disabled:opacity-60"
+          className="h-12 px-6 rounded-full bg-gold text-black text-sm font-semibold disabled:opacity-60 shadow-[0_10px_28px_rgba(250,204,21,0.22)]"
         >
           {sending ? "..." : "Send"}
         </button>
