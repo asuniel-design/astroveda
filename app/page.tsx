@@ -2,6 +2,7 @@ import Hero from './sections/Hero';
 import Services from './sections/Services';
 import FeaturedAstrologers from './sections/FeaturedAstrologers';
 import Testimonials from './sections/Testimonials';
+import InfiniteRemedyCarousel from './components/infinite-remedy-carousel';
 
 export default function Page() {
   return (
@@ -9,6 +10,7 @@ export default function Page() {
       <Hero />
       <Services />
       <FeaturedAstrologers />
+      <InfiniteRemedyCarousel />
       <Testimonials />
       <div className="h-20" />
       <footer className="border-t border-white/10 py-8 text-center text-white/50 text-sm">
