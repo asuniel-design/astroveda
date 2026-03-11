@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import WalletBalance from "./wallet-balance";
 import LanguageSwitcher from "./language-switcher";
+import ReactivePortrait from "./reactive-portrait";
 import { cn } from "../utils/cn";
 
 const NAV = [
@@ -29,14 +30,23 @@ export default function Sidebar() {
   const locale = parts[0] || "hi";
   const pathNoLocale = "/" + parts.slice(1).join("/");
 
+  let dob: string | null = null;
+  if (typeof window !== "undefined") {
+    try {
+      const raw = window.localStorage.getItem("birthData");
+      const parsed = raw ? JSON.parse(raw) : null;
+      dob = parsed?.dob || null;
+    } catch {
+      dob = null;
+    }
+  }
+
   return (
     <aside className="hidden md:block fixed left-0 top-0 h-screen w-[260px] border-r border-white/10 bg-white/5 backdrop-blur-md">
       <div className="h-full flex flex-col">
         <div className="p-5 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold/25 to-gold/10 border border-gold/20 flex items-center justify-center text-gold font-bold">
-              A
-            </div>
+            <ReactivePortrait dob={dob} />
             <div className="min-w-0">
               <div className="text-sm font-semibold text-white/90 truncate">Guest User</div>
               <div className="text-xs text-white/50 truncate">Premium Experience</div>
