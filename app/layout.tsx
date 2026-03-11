@@ -13,11 +13,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="min-h-screen bg-gradient-to-br from-cosmic-purple via-cosmic-indigo to-[#0b0a1c] bg-starfield selection:bg-gold/40">
-        <div className="relative">
+      <body className="selection:bg-gold/40 text-white">
+        <div className="min-h-screen bg-gradient-to-br from-cosmic-purple via-cosmic-indigo to-[#0b0a1c] bg-starfield relative">
           {/* Soft vignette */}
-          <div className="pointer-events-none absolute inset-0 opacity-[0.35] bg-radial from-transparent via-transparent to-transparent" />
-          {children}
+          <div className="pointer-events-none absolute inset-0 opacity-[0.20]" />
+          <div className="relative">
+            {children}
+          </div>
         </div>
       </body>
     </html>

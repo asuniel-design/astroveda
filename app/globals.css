@@ -7,7 +7,7 @@
 }
 
 html, body, #__next { height: 100%; }
-body { @apply bg-cosmic-purple text-white antialiased; }
+body { @apply bg-gradient-to-br from-cosmic-purple via-cosmic-indigo to-[#0b0a1c] text-white antialiased; }
 
 
 .glass {
