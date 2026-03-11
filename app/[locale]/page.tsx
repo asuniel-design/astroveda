@@ -1,12 +1,12 @@
-import Hero from './sections/Hero';
-import Services from './sections/Services';
-import FeaturedAstrologers from './sections/FeaturedAstrologers';
-import Testimonials from './sections/Testimonials';
-import InfiniteRemedyCarousel from './components/infinite-remedy-carousel';
+import Hero from '../sections/Hero';
+import Services from '../sections/Services';
+import FeaturedAstrologers from '../sections/FeaturedAstrologers';
+import Testimonials from '../sections/Testimonials';
+import InfiniteRemedyCarousel from '../components/infinite-remedy-carousel';
 
 export default function Page() {
   return (
-    <main className="max-w-7xl mx-auto px-4 md:px-6">
+    <main className="max-w-6xl mx-auto px-4 md:px-6">
       <Hero />
       <Services />
       <FeaturedAstrologers />

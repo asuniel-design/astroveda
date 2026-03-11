@@ -1,9 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+import { translateDeep } from "../../../lib/translator";
+
 const ENGINE = process.env.NEXT_PUBLIC_ASTROLOGY_ENGINE;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { dob, time, city } = req.query;
+  const { dob, time, city, locale } = req.query;
 
   const fallback = {
     ok: true,
@@ -13,7 +15,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   };
 
   try {
-    if (!ENGINE) return res.status(200).json(fallback);
+    const target = typeof locale === "string" ? locale : null;
+
+    if (!ENGINE) {
+      const out = target ? await translateDeep({ value: fallback, target }) : fallback;
+      return res.status(200).json(out);
+    }
     const base = ENGINE.replace(/\/$/, "");
 
     const candidates = [
@@ -26,14 +33,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const upstream = await fetch(url, { headers: { Accept: "application/json" } });
         if (!upstream.ok) continue;
         const data = await upstream.json();
-        return res.status(200).json(data);
+        const out = target ? await translateDeep({ value: data, target }) : data;
+        return res.status(200).json(out);
       } catch {
         // continue
       }
     }
 
-    return res.status(200).json(fallback);
+    {
+      const out = target ? await translateDeep({ value: fallback, target }) : fallback;
+      return res.status(200).json(out);
+    }
   } catch {
-    return res.status(200).json(fallback);
+    const target = typeof locale === "string" ? locale : null;
+    const out = target ? await translateDeep({ value: fallback, target }) : fallback;
+    return res.status(200).json(out);
   }
 }

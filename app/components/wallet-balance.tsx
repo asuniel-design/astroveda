@@ -10,6 +10,7 @@ function getUserId() {
 
 export default function WalletBalance() {
   const userId = getUserId();
+  const locale = typeof window !== "undefined" ? (window.location.pathname.split("/").filter(Boolean)[0] || "hi") : "hi";
   const { data, isLoading, error } = useSWR(
     userId ? `/api/wallet/balance?userId=${encodeURIComponent(userId)}` : null,
     fetchJSON,
@@ -32,7 +33,7 @@ export default function WalletBalance() {
           className="px-4 py-2.5 rounded-full bg-gold text-black text-xs font-semibold hover:brightness-105 active:brightness-95 shadow-[0_8px_24px_rgba(250,204,21,0.18)]"
           onClick={() => {
             // For now: route to wallet/topup later
-            window.location.href = "/wallet";
+            window.location.href = `/${locale}/wallet`;
           }}
         >
           Recharge

@@ -35,12 +35,12 @@ export default function AstrologerCard({ astro }: Props) {
       </div>
       <div className="mt-auto flex gap-2">
         <a
-          href={`/chat?astroId=${encodeURIComponent(astro.id)}&astroName=${encodeURIComponent(astro.name || "")}`}
+          href={`chat?astroId=${encodeURIComponent(astro.id)}&astroName=${encodeURIComponent(astro.name || "")}`}
           className="btn-primary w-full text-center"
         >
           💬 Chat Now
         </a>
-        <a href="/talk" className="glass px-3 rounded-xl border border-white/10 text-center">
+        <a href="talk" className="glass px-3 rounded-xl border border-white/10 text-center">
           📞
         </a>
       </div>
