@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { Button } from "../components/ui/button";
 import LanguageSwitcher from "../components/language-switcher";
@@ -13,6 +14,8 @@ function getLocaleFromPath(pathname: string) {
   return seg || "hi";
 }
 
+const SLIDES = ["s1", "s2", "s3", "s4"] as const;
+
 export default function Hero() {
   const t = useTranslations();
   const router = useRouter();
@@ -20,46 +23,116 @@ export default function Hero() {
   const locale = useMemo(() => getLocaleFromPath(pathname), [pathname]);
 
   const [open, setOpen] = useState(false);
+  const [idx, setIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   function isAuthed() {
     if (typeof window === "undefined") return false;
     return !!window.localStorage.getItem("userId");
   }
 
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setIdx((x) => (x + 1) % SLIDES.length), 5000);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  const slide = SLIDES[idx];
+
   return (
-    <section className="py-12 md:py-20 flex flex-col items-center justify-center text-center">
-      <div className="w-full mb-10 flex items-start justify-between sm:relative sm:block">
+    <section className="py-10 md:py-16 w-full" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      {/* Top row (brand + language) */}
+      <div className="w-full mb-8 flex items-start justify-between sm:relative sm:block">
         <div className="text-left sm:absolute sm:left-0 sm:top-0">
           <div className="text-sm font-semibold text-white/90 leading-snug">{t("brand.name")}</div>
           <div className="text-xs text-white/50 leading-snug">{t("brand.tagline")}</div>
         </div>
-
         <div className="w-[180px] sm:absolute sm:right-0 sm:top-0">
           <LanguageSwitcher compact />
         </div>
-
-        {/* Spacer to reserve height so headline remains perfectly centered (sm+) */}
         <div className="hidden sm:block h-14" />
       </div>
 
-      <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent whitespace-normal break-words">
-        {t("hero.headlineA")}<br />
-        {t("hero.headlineB")}
-      </h1>
-      <p className="text-white/70 max-w-2xl mx-auto mb-8">{t("hero.subtitle")}</p>
+      {/* Carousel */}
+      <div className="relative w-full">
+        <div className="relative min-h-[340px] md:min-h-[380px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slide}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                {/* Left copy */}
+                <div className="text-center md:text-left flex flex-col items-center md:items-start">
+                  <div className="text-xs uppercase tracking-widest text-white/50">
+                    {t(`heroCarousel.${slide}.kicker`)}
+                  </div>
+                  <h1 className="mt-3 text-4xl md:text-6xl font-bold bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent whitespace-normal break-words text-center md:text-left">
+                    {t(`heroCarousel.${slide}.headline`)}
+                  </h1>
+                  <p className="mt-4 text-white/70 max-w-2xl whitespace-normal">
+                    {t(`heroCarousel.${slide}.subhead`)}
+                  </p>
 
-      <Button
-        className="px-8 py-4 text-base"
-        onClick={() => {
-          if (isAuthed()) {
-            router.push(`/${locale}/chat`);
-          } else {
-            setOpen(true);
-          }
-        }}
-      >
-        {t("hero.cta")}
-      </Button>
+                  <div className="mt-7 flex items-center gap-3">
+                    <Button
+                      className="px-8 py-4 text-base"
+                      onClick={() => {
+                        if (isAuthed()) router.push(`/${locale}/chat`);
+                        else setOpen(true);
+                      }}
+                    >
+                      {t("hero.cta")}
+                    </Button>
+                    <div className="text-xs text-white/50">
+                      {t(`heroCarousel.${slide}.note`)}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right portrait */}
+                <div className="flex justify-center md:justify-end">
+                  <div className="relative w-[260px] h-[320px] md:w-[320px] md:h-[360px] rounded-3xl border border-white/10 bg-white/5 backdrop-blur-2xl overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-b from-gold/10 via-transparent to-black/40" />
+                    <div className="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-gold/15 blur-2xl" />
+
+                    {/* Placeholder portrait */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-white/10 to-white/5 border border-white/10" />
+                    </div>
+
+                    {/* Verified badge */}
+                    <div className="absolute top-4 right-4">
+                      <span className="text-[11px] px-3 py-1 rounded-full bg-gold/20 text-gold border border-gold/30">
+                        {t("astroCard.verified")}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Dots */}
+        <div className="mt-6 flex items-center justify-center gap-2">
+          {SLIDES.map((s, i) => (
+            <button
+              key={s}
+              aria-label={`Slide ${i + 1}`}
+              onClick={() => setIdx(i)}
+              className={
+                "h-2 rounded-full transition-all " +
+                (i === idx ? "w-8 bg-gold" : "w-2 bg-white/20 hover:bg-white/30")
+              }
+            />
+          ))}
+        </div>
+      </div>
 
       <FunnelModal
         open={open}

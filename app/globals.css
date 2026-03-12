@@ -25,9 +25,15 @@ body { @apply bg-gradient-to-br from-cosmic-purple via-cosmic-indigo to-[#0b0a1c
   @apply glass rounded-2xl border border-white/10;
 }
 
-/* Prevent glyph clipping for Indian scripts (Telugu/Hindi/etc.) */
-[data-locale] h1,
-[data-locale] h2,
+/* Prevent glyph clipping for Indian scripts */
+[data-locale="te"] h1,
+[data-locale="te"] h2,
+[data-locale="hi"] h1,
+[data-locale="hi"] h2 {
+  line-height: 1.8;
+  padding-bottom: 0.2em;
+}
+
 [data-locale] h3 {
   line-height: 1.6;
   padding-bottom: 0.2em;

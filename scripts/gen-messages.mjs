@@ -17,6 +17,32 @@ const base = {
     subtitle: 'Get instant guidance on love, career, health & more from verified Vedic experts.',
     cta: 'First Chat is FREE'
   },
+  heroCarousel: {
+    s1: {
+      kicker: 'Instant Answers',
+      headline: 'Chat with Verified Astrologers',
+      subhead: 'Love, career, health — get clarity in minutes.',
+      note: '24×7 • Private • Fast'
+    },
+    s2: {
+      kicker: 'Free Kundli',
+      headline: 'Birth Chart + Remedies',
+      subhead: 'Generate your Kundli and see personalized remedies.',
+      note: 'Auto-filled from your profile'
+    },
+    s3: {
+      kicker: 'Daily Guidance',
+      headline: 'Horoscope in Your Language',
+      subhead: 'Read today’s forecast in Hindi, Telugu and more.',
+      note: 'Localized instantly'
+    },
+    s4: {
+      kicker: 'Sacred Services',
+      headline: 'Puja Kits & Priests (Geo-smart)',
+      subhead: 'INR for India, USD for USA — packages tailored by region.',
+      note: 'Book in 1 tap'
+    }
+  },
   nav: {
     chat: 'Chat',
     talk: 'Talk',
@@ -79,6 +105,7 @@ const base = {
   },
   home: {
     featuredAstrologersTitle: 'Talk to Our Expert Astrologers',
+    trustTitle: 'Verified User Experiences',
     loadingAstrologers: 'Loading astrologers…',
     serverError: 'Server error. Please try again later.',
     remediesTitle: 'Remedies',
@@ -112,6 +139,12 @@ const t = {
       headlineB: 'सर्वश्रेष्ठ ज्योतिषियों से जुड़ें',
       subtitle: 'प्रेम, करियर, स्वास्थ्य आदि पर तुरंत मार्गदर्शन पाएँ — सत्यापित वैदिक विशेषज्ञों से।',
       cta: 'पहली चैट मुफ़्त है'
+    },
+    heroCarousel: {
+      s1: { kicker: 'तुरंत उत्तर', headline: 'सत्यापित ज्योतिषियों से चैट', subhead: 'प्रेम, करियर, स्वास्थ्य — मिनटों में स्पष्टता पाएं।', note: '24×7 • निजी • तेज़' },
+      s2: { kicker: 'मुफ़्त कुंडली', headline: 'जन्म कुंडली + उपाय', subhead: 'अपनी कुंडली बनाएं और व्यक्तिगत उपाय देखें।', note: 'प्रोफ़ाइल से ऑटो-फिल' },
+      s3: { kicker: 'दैनिक मार्गदर्शन', headline: 'आपकी भाषा में राशिफल', subhead: 'आज का पूर्वानुमान हिन्दी, तेलुगु आदि में पढ़ें।', note: 'तुरंत लोकलाइज़्ड' },
+      s4: { kicker: 'पवित्र सेवाएँ', headline: 'पुजा किट और पुजारी (जियो-स्मार्ट)', subhead: 'भारत में ₹, USA में $ — क्षेत्र के अनुसार पैकेज।', note: '1 टैप में बुक करें' }
     },
     nav: {
       chat: 'चैट',
@@ -160,6 +193,7 @@ const t = {
     },
     home: {
       featuredAstrologersTitle: 'हमारे विशेषज्ञ ज्योतिषियों से बात करें',
+      trustTitle: 'सत्यापित अनुभव',
       loadingAstrologers: 'ज्योतिषी लोड हो रहे हैं…',
       serverError: 'सर्वर त्रुटि। कृपया बाद में पुनः प्रयास करें।',
       remediesTitle: 'उपाय',
@@ -190,6 +224,12 @@ const t = {
       headlineB: 'అత్యుత్తమ జ్యోతిష్యులను కలవండి',
       subtitle: 'ప్రేమ, కెరీర్, ఆరోగ్యం తదితర విషయాల్లో వెంటనే మార్గదర్శనం పొందండి — ధృవీకరించిన వైదిక నిపుణుల నుంచి.',
       cta: 'మొదటి చాట్ ఉచితం'
+    },
+    heroCarousel: {
+      s1: { kicker: 'త్వరిత సమాధానాలు', headline: 'ధృవీకరించిన జ్యోతిష్యులతో చాట్', subhead: 'ప్రేమ, కెరీర్, ఆరోగ్యం — నిమిషాల్లో స్పష్టత.', note: '24×7 • వ్యక్తిగతం • వేగంగా' },
+      s2: { kicker: 'ఉచిత కుండ్లీ', headline: 'జన్మ చార్ట్ + ఉపాయాలు', subhead: 'మీ కుండ్లీ రూపొందించి, వ్యక్తిగత ఉపాయాలు చూడండి.', note: 'ప్రొఫైల్ నుంచి ఆటో-ఫిల్' },
+      s3: { kicker: 'దినసరి మార్గదర్శనం', headline: 'మీ భాషలో రాశిఫలం', subhead: 'ఈరోజు అంచనాను తెలుగు, హిందీ తదితర భాషల్లో చదవండి.', note: 'తక్షణ లోకలైజేషన్' },
+      s4: { kicker: 'పవిత్ర సేవలు', headline: 'పూజా కిట్లు & పూజారులు (జియో-స్మార్ట్)', subhead: 'భారతదేశంలో ₹, USAలో $ — ప్రాంతానుసార ప్యాకేజీలు.', note: '1 ట్యాప్‌లో బుక్' }
     },
     nav: {
       chat: 'చాట్',
@@ -238,6 +278,7 @@ const t = {
     },
     home: {
       featuredAstrologersTitle: 'మా నిపుణ జ్యోతిష్యులను సంప్రదించండి',
+      trustTitle: 'ధృవీకరించిన వినియోగదారుల అనుభవాలు',
       loadingAstrologers: 'జ్యోతిష్యులు లోడ్ అవుతున్నారు…',
       serverError: 'సర్వర్ లోపం. దయచేసి తర్వాత ప్రయత్నించండి.',
       remediesTitle: 'ఉపాయాలు',

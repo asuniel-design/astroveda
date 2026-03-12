@@ -1,5 +1,6 @@
 "use client";
 import { motion } from 'framer-motion';
+import { PhoneCall } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 type Props = {
@@ -42,8 +43,12 @@ export default function AstrologerCard({ astro }: Props) {
         >
           💬 {t('astroCard.chatNow')}
         </a>
-        <a href="talk" className="glass px-3 rounded-xl border border-white/10 text-center">
-          📞
+        <a
+          href="talk"
+          className="glass w-11 rounded-xl border border-white/10 flex items-center justify-center"
+          aria-label={t('nav.talk')}
+        >
+          <PhoneCall className="w-4 h-4 text-white" />
         </a>
       </div>
     </motion.div>

@@ -13,6 +13,8 @@ type Remedy = {
   description?: string;
   price_inr?: number;
   price?: number;
+  display_price?: number;
+  display_symbol?: string;
   category?: string;
 };
 
@@ -22,6 +24,8 @@ function normalize(r: any): Remedy {
     title: r.title ?? r.name,
     description: r.description ?? r.subtitle,
     price_inr: r.price_inr ?? r.price,
+    display_price: r.display_price,
+    display_symbol: r.display_symbol,
     category: r.category,
   };
 }
@@ -118,7 +122,9 @@ export default function InfiniteRemedyCarousel() {
                   <div className="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-2xl p-4">
                     <div className="flex items-center justify-between gap-3">
                       <div className="text-xs text-white/50">{r.category || t("home.remediesTitle")}</div>
-                      <div className="text-xs font-semibold text-gold">₹ {r.price_inr ?? "—"}</div>
+                      <div className="text-xs font-semibold text-gold">
+                        {r.display_symbol || "₹"} {r.display_price ?? r.price_inr ?? "—"}
+                      </div>
                     </div>
                     <div className="mt-2 text-white font-semibold">{r.title || "—"}</div>
                     <div className="mt-1 text-sm text-white/60 line-clamp-2">

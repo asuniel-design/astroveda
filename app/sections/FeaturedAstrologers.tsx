@@ -18,8 +18,8 @@ export default function FeaturedAstrologers() {
         <div className="text-center py-12 text-red-400">{t('home.serverError')}</div>
       )}
       {!isLoading && !error && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {list.slice(0,6).map((a: any) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {list.slice(0,3).map((a: any) => (
             <AstrologerCard key={a.id} astro={a} />
           ))}
         </div>

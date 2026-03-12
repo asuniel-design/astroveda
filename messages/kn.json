@@ -14,6 +14,32 @@
     "subtitle": "ಪ್ರೇಮ, ವೃತ್ತಿ, ಆರೋಗ್ಯ ಇತ್ಯಾದಿಗಳ ಬಗ್ಗೆ ತ್ವರಿತ ಮಾರ್ಗದರ್ಶನ — ಪರಿಶೀಲಿತ ವೇದಿಕ ತಜ್ಞರಿಂದ.",
     "cta": "ಮೊದಲ ಚಾಟ್ ಉಚಿತ"
   },
+  "heroCarousel": {
+    "s1": {
+      "kicker": "Instant Answers",
+      "headline": "Chat with Verified Astrologers",
+      "subhead": "Love, career, health — get clarity in minutes.",
+      "note": "24×7 • Private • Fast"
+    },
+    "s2": {
+      "kicker": "Free Kundli",
+      "headline": "Birth Chart + Remedies",
+      "subhead": "Generate your Kundli and see personalized remedies.",
+      "note": "Auto-filled from your profile"
+    },
+    "s3": {
+      "kicker": "Daily Guidance",
+      "headline": "Horoscope in Your Language",
+      "subhead": "Read today’s forecast in Hindi, Telugu and more.",
+      "note": "Localized instantly"
+    },
+    "s4": {
+      "kicker": "Sacred Services",
+      "headline": "Puja Kits & Priests (Geo-smart)",
+      "subhead": "INR for India, USD for USA — packages tailored by region.",
+      "note": "Book in 1 tap"
+    }
+  },
   "nav": {
     "chat": "ಚಾಟ್",
     "talk": "ಕಾಲ್",
@@ -76,6 +102,7 @@
   },
   "home": {
     "featuredAstrologersTitle": "Talk to Our Expert Astrologers",
+    "trustTitle": "Verified User Experiences",
     "loadingAstrologers": "Loading astrologers…",
     "serverError": "Server error. Please try again later.",
     "remediesTitle": "Remedies",
