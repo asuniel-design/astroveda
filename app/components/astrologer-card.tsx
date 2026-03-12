@@ -1,6 +1,7 @@
 "use client";
 import { motion } from 'framer-motion';
 import { PhoneCall } from 'lucide-react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 type Props = {
@@ -9,7 +10,30 @@ type Props = {
 
 export default function AstrologerCard({ astro }: Props) {
   const t = useTranslations();
+  const router = useRouter();
+  const pathname = usePathname() || "/";
+  const sp = useSearchParams();
+
   const online = astro.is_online;
+
+  const locale = pathname.split("/").filter(Boolean)[0] || "hi";
+
+  function isAuthed() {
+    if (typeof window === "undefined") return false;
+    return !!window.localStorage.getItem("userId");
+  }
+  function hasBirthData() {
+    if (typeof window === "undefined") return false;
+    return !!window.localStorage.getItem("birthData");
+  }
+  function buildCallbackUrl(nextPath: string) {
+    const p = new URLSearchParams(sp?.toString?.() || "");
+    p.set("showModal", "true");
+    p.set("next", nextPath);
+    const qs = p.toString();
+    return qs ? `${pathname}?${qs}` : pathname;
+  }
+
   return (
     <motion.div whileHover={{ y: -4 }} className="card p-4 flex flex-col gap-3 w-full max-w-[420px]">
       <div className="flex items-start gap-3">
@@ -42,12 +66,27 @@ export default function AstrologerCard({ astro }: Props) {
         ))}
       </div>
       <div className="mt-auto flex gap-2">
-        <a
-          href={`chat?astroId=${encodeURIComponent(astro.id)}&astroName=${encodeURIComponent(astro.name || "")}`}
+        <button
+          onClick={() => {
+            const chatPath = `/${locale}/chat?astroId=${encodeURIComponent(astro.id)}&astroName=${encodeURIComponent(astro.name || "")}`;
+
+            if (!isAuthed()) {
+              const callbackUrl = buildCallbackUrl(chatPath);
+              router.push(`/${locale}/signup?callbackUrl=${encodeURIComponent(callbackUrl)}`);
+              return;
+            }
+
+            if (!hasBirthData()) {
+              router.push(buildCallbackUrl(chatPath));
+              return;
+            }
+
+            router.push(chatPath);
+          }}
           className="btn-primary w-full text-center"
         >
           💬 {t('astroCard.chatNow')}
-        </a>
+        </button>
         <a
           href="talk"
           className="glass w-11 rounded-xl border border-white/10 flex items-center justify-center"

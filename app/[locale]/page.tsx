@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
 import Hero from '../sections/Hero';
 import Services from '../sections/Services';
@@ -11,8 +12,12 @@ export default async function Page() {
 
   return (
     <main className="max-w-6xl mx-auto px-4 md:px-6">
-      <Hero />
-      <FeaturedAstrologers />
+      <Suspense fallback={<div className="h-[520px]" />}>
+        <Hero />
+      </Suspense>
+      <Suspense fallback={<div className="h-[260px]" />}>
+        <FeaturedAstrologers />
+      </Suspense>
       <InfiniteRemedyCarousel />
       <Services />
       <TrustMarquee />

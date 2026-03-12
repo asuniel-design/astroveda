@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -28,6 +28,7 @@ export default function Hero() {
   const t = useTranslations();
   const router = useRouter();
   const pathname = usePathname() || "/";
+  const sp = useSearchParams();
   const locale = useMemo(() => getLocaleFromPath(pathname), [pathname]);
 
   const [open, setOpen] = useState(false);
@@ -39,16 +40,44 @@ export default function Hero() {
     return !!window.localStorage.getItem("userId");
   }
 
+  function hasBirthData() {
+    if (typeof window === "undefined") return false;
+    return !!window.localStorage.getItem("birthData");
+  }
+
+  function buildCallbackUrl(nextPath: string) {
+    const p = new URLSearchParams(sp?.toString?.() || "");
+    p.set("showModal", "true");
+    p.set("next", nextPath);
+    const qs = p.toString();
+    return qs ? `${pathname}?${qs}` : pathname;
+  }
+
+  function clearReturnTriggers() {
+    const p = new URLSearchParams(sp?.toString?.() || "");
+    p.delete("showModal");
+    p.delete("next");
+    const qs = p.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname);
+  }
+
   useEffect(() => {
     if (paused) return;
     const id = setInterval(() => setIdx((x) => (x + 1) % SLIDES.length), 5000);
     return () => clearInterval(id);
   }, [paused]);
 
+  // Return-to-source trigger: after signup, auto-open Quick Setup (Funnel)
+  useEffect(() => {
+    const show = sp?.get?.("showModal") === "true";
+    if (!show) return;
+    if (isAuthed() && !hasBirthData()) setOpen(true);
+  }, [sp]);
+
   const slide = SLIDES[idx];
 
   return (
-    <section className="py-8 md:py-12 w-full" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <section className="py-6 md:py-10 w-full" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       {/* Top row (brand + language) */}
       <div className="w-full mb-8 flex items-start justify-between">
         <div className="text-left">
@@ -89,8 +118,17 @@ export default function Hero() {
                     <Button
                       className="px-7 sm:px-9 py-4 sm:py-5 text-sm sm:text-base leading-none whitespace-nowrap"
                       onClick={() => {
-                        if (isAuthed()) router.push(`/${locale}/chat`);
-                        else setOpen(true);
+                        const nextPath = `/${locale}/chat`;
+                        if (!isAuthed()) {
+                          const callbackUrl = buildCallbackUrl(nextPath);
+                          router.push(`/${locale}/signup?callbackUrl=${encodeURIComponent(callbackUrl)}`);
+                          return;
+                        }
+                        if (!hasBirthData()) {
+                          setOpen(true);
+                          return;
+                        }
+                        router.push(nextPath);
                       }}
                     >
                       {t("hero.cta")}
@@ -151,10 +189,15 @@ export default function Hero() {
 
       <FunnelModal
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={() => {
+          setOpen(false);
+          clearReturnTriggers();
+        }}
         onDone={() => {
           setOpen(false);
-          router.push(`/${locale}/chat`);
+          const next = sp?.get?.("next") || `/${locale}/chat`;
+          clearReturnTriggers();
+          router.push(next);
         }}
       />
     </section>

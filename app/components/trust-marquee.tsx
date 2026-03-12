@@ -88,8 +88,8 @@ export default function TrustMarquee() {
   }, [halfWidth, paused, controls]);
 
   return (
-    <section className="py-8 md:py-12">
-      <div className="flex items-end justify-between gap-4 mb-6">
+    <section className="py-6 md:py-10">
+      <div className="flex items-end justify-between gap-4 mb-5">
         <h2 className="text-xl font-semibold text-white">{t("home.trustTitle")}</h2>
       </div>
 

@@ -103,7 +103,7 @@ export default function FunnelForm({
             value={dob}
             onChange={(e) => setDob(e.target.value)}
             placeholder={step.placeholder}
-            className="mt-3 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-gold/40"
+            className="mt-3 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/70 text-center outline-none focus:ring-2 focus:ring-gold/40"
           />
         )}
         {step.key === "time" && (
@@ -111,7 +111,7 @@ export default function FunnelForm({
             value={time}
             onChange={(e) => setTime(e.target.value)}
             placeholder={step.placeholder}
-            className="mt-3 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-gold/40"
+            className="mt-3 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/70 text-center outline-none focus:ring-2 focus:ring-gold/40"
           />
         )}
         {step.key === "city" && (
@@ -119,7 +119,7 @@ export default function FunnelForm({
             value={city}
             onChange={(e) => setCity(e.target.value)}
             placeholder={step.placeholder}
-            className="mt-3 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-gold/40"
+            className="mt-3 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/70 text-center outline-none focus:ring-2 focus:ring-gold/40"
           />
         )}
 
