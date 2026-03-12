@@ -7,17 +7,63 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model api_keys {
+  id         Int        @id @default(autoincrement())
+  key        String     @unique
+  identityId Int
+  tier       String     @default("SOVEREIGN_ELITE")
+  isActive   Boolean    @default(true)
+  createdAt  DateTime   @default(now())
+  identities identities @relation(fields: [identityId], references: [id])
+}
+
+model astrologers {
+  id                     String    @id
+  name                   String
+  bio                    String?
+  avatar_url             String?
+  expertise              String[]
+  languages              String[]
+  experience_years       Int
+  price_per_minute       Decimal   @db.Decimal(10, 2)
+  price_per_chat_minute  Decimal?  @db.Decimal(10, 2)
+  price_per_call_minute  Decimal?  @db.Decimal(10, 2)
+  price_per_video_minute Decimal?  @db.Decimal(10, 2)
+  is_online              Boolean   @default(false)
+  is_busy                Boolean   @default(false)
+  status                 String?   @default("OFFLINE")
+  is_verified            Boolean   @default(false)
+  rating                 Float?    @default(0.0)
+  total_ratings          Int?      @default(0)
+  response_time_avg      Int?      @default(0)
+  completion_rate        Float?    @default(0.0)
+  is_blocked             Boolean   @default(false)
+  created_at             DateTime  @default(now())
+  updated_at             DateTime
+  last_active            DateTime?
+}
+
+model identities {
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  place     String?
+  star      String?
+  reason    String?
+  status    String     @default("PENDING_PAYMENT")
+  createdAt DateTime   @default(now())
+  api_keys  api_keys[]
+}
+
+// App user profile (for free-chat redemption + onboarding)
 model User {
   id              String   @id @default(cuid())
   email           String?  @unique
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
-  // Free-chat eligibility
   hasUsedFreeChat Boolean  @default(false)
   freeChatUsedAt  DateTime?
 
-  // Quick setup / birth details (MVP)
   birthDob        String?
   birthTime       String?
   birthCity       String?
