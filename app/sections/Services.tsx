@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useUser } from "@clerk/nextjs";
 import FunnelModal from "../components/funnel-modal";
 
 const items = [
@@ -19,6 +20,7 @@ function getLocaleFromPath(pathname: string) {
 
 export default function Services() {
   const t = useTranslations();
+  const { isSignedIn } = useUser();
   const router = useRouter();
   const pathname = usePathname() || "/";
   const locale = useMemo(() => getLocaleFromPath(pathname), [pathname]);
@@ -27,8 +29,7 @@ export default function Services() {
   const [targetHref, setTargetHref] = useState<string | null>(null);
 
   function isAuthed() {
-    if (typeof window === "undefined") return false;
-    return !!window.localStorage.getItem("userId");
+    return !!isSignedIn;
   }
 
   function hasBirthData() {

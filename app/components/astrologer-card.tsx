@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { PhoneCall } from 'lucide-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useUser } from '@clerk/nextjs';
 
 type Props = {
   astro: any;
@@ -10,6 +11,7 @@ type Props = {
 
 export default function AstrologerCard({ astro }: Props) {
   const t = useTranslations();
+  const { isSignedIn } = useUser();
   const router = useRouter();
   const pathname = usePathname() || "/";
   const sp = useSearchParams();
@@ -19,8 +21,7 @@ export default function AstrologerCard({ astro }: Props) {
   const locale = pathname.split("/").filter(Boolean)[0] || "hi";
 
   function isAuthed() {
-    if (typeof window === "undefined") return false;
-    return !!window.localStorage.getItem("userId");
+    return !!isSignedIn;
   }
   function hasBirthData() {
     if (typeof window === "undefined") return false;

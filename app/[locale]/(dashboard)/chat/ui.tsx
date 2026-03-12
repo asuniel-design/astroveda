@@ -2,11 +2,13 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 
 type Msg = { role: "user" | "assistant"; text: string };
 
 export default function ChatClient() {
   const sp = useSearchParams();
+  const { isSignedIn, user } = useUser();
   const astroId = sp?.get("astroId") || null;
   const astroName = sp?.get("astroName") || null;
 
@@ -24,26 +26,24 @@ export default function ChatClient() {
   const [text, setText] = useState("");
   const [sending, setSending] = useState(false);
 
-  // Redeem free chat once per user (server-enforced when DATABASE_URL is set on Vercel)
+  // Redeem free chat once per Clerk user (server-enforced)
   useEffect(() => {
     (async () => {
       try {
-        const userId = window.localStorage.getItem("userId");
-        const eligible = window.localStorage.getItem("isFirstChatFree") === "true";
+        if (!isSignedIn || !user?.id) return;
         const already = window.localStorage.getItem("freeChatRedeemed") === "true";
-        if (!userId || !eligible || already) return;
+        if (already) return;
 
         const res = await fetch("/api/freechat/redeem", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId }),
+          body: JSON.stringify({ userId: user.id }),
         });
         const data = await res.json().catch(() => ({}));
 
         if (res.ok && data?.ok) {
           window.localStorage.setItem("freeChatRedeemed", "true");
           if (data.alreadyUsed) {
-            window.localStorage.setItem("isFirstChatFree", "false");
             setMessages((m) => [
               ...m,
               { role: "assistant", text: "Note: Your free chat has already been used." },
@@ -59,7 +59,7 @@ export default function ChatClient() {
         // ignore
       }
     })();
-  }, []);
+  }, [isSignedIn, user?.id]);
 
   async function send() {
     const t = text.trim();

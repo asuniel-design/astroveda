@@ -1,3 +1,4 @@
+import { clerkMiddleware } from "@clerk/nextjs/server";
 import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -37,8 +38,13 @@ function pickPreferredLocale(req: NextRequest): TargetLocale {
   return "en";
 }
 
-export default function middleware(req: NextRequest) {
+export default clerkMiddleware((auth, req: NextRequest) => {
   const { pathname } = req.nextUrl;
+
+  // Never locale-redirect API routes, but still allow Clerk middleware to run.
+  if (pathname.startsWith("/api")) {
+    return NextResponse.next();
+  }
 
   // If URL already has a locale prefix, let next-intl handle it.
   const first = pathname.split("/").filter(Boolean)[0];
@@ -67,8 +73,8 @@ export default function middleware(req: NextRequest) {
   }
 
   return res;
-}
+});
 
 export const config = {
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  matcher: ["/((?!_next|.*\\..*).*)"],
 };

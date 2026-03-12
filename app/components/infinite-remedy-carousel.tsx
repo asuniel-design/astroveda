@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import useSWR from "swr";
 import { useTranslations } from "next-intl";
+import { useUser } from "@clerk/nextjs";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, useAnimationControls } from "framer-motion";
 import { fetchJSON } from "@/lib/api";
@@ -43,13 +44,13 @@ function formatRemedyPrice(r: Remedy) {
 
 export default function InfiniteRemedyCarousel() {
   const t = useTranslations();
+  const { isSignedIn } = useUser();
   const router = useRouter();
   const pathname = usePathname() || "/";
   const locale = pathname.split("/").filter(Boolean)[0] || "hi";
 
   function isAuthed() {
-    if (typeof window === "undefined") return false;
-    return !!window.localStorage.getItem("userId");
+    return !!isSignedIn;
   }
   function hasBirthData() {
     if (typeof window === "undefined") return false;

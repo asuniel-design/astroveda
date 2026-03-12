@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useUser } from "@clerk/nextjs";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
@@ -26,6 +27,7 @@ const HERO_IMAGES: Record<(typeof SLIDES)[number], string> = {
 
 export default function Hero() {
   const t = useTranslations();
+  const { isSignedIn } = useUser();
   const router = useRouter();
   const pathname = usePathname() || "/";
   const sp = useSearchParams();
@@ -36,8 +38,7 @@ export default function Hero() {
   const [paused, setPaused] = useState(false);
 
   function isAuthed() {
-    if (typeof window === "undefined") return false;
-    return !!window.localStorage.getItem("userId");
+    return !!isSignedIn;
   }
 
   function hasBirthData() {

@@ -1,4 +1,5 @@
 import './globals.css';
+import { ClerkProvider } from '@clerk/nextjs';
 import {
   Inter,
   Poppins,
@@ -32,13 +33,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${poppins.variable} ${notoDeva.variable} ${notoTelugu.variable} ${notoTamil.variable} ${notoKannada.variable} ${notoMalayalam.variable}`}
     >
       <body className="selection:bg-gold/40 text-white">
-        <div className="min-h-screen bg-gradient-to-br from-cosmic-purple via-cosmic-indigo to-[#0b0a1c] bg-starfield relative">
-          {/* Soft vignette */}
-          <div className="pointer-events-none absolute inset-0 opacity-[0.20]" />
-          <div className="relative">
-            {children}
+        <ClerkProvider>
+          <div className="min-h-screen bg-gradient-to-br from-cosmic-purple via-cosmic-indigo to-[#0b0a1c] bg-starfield relative">
+            {/* Soft vignette */}
+            <div className="pointer-events-none absolute inset-0 opacity-[0.20]" />
+            <div className="relative">{children}</div>
           </div>
-        </div>
+        </ClerkProvider>
       </body>
     </html>
   );
