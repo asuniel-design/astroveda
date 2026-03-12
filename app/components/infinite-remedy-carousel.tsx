@@ -96,8 +96,8 @@ export default function InfiniteRemedyCarousel() {
   }, [halfWidth, paused, controls]);
 
   return (
-    <section className="py-10 md:py-16">
-      <div className="flex items-end justify-between gap-4 mb-8">
+    <section className="py-8 md:py-12">
+      <div className="flex items-end justify-between gap-4 mb-6">
         <div>
           <h2 className="text-xl font-semibold text-white">{t("home.remediesTitle")}</h2>
           <p className="text-sm text-white/60">{t("home.remediesSubtitle")}</p>

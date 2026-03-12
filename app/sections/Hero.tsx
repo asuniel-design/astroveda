@@ -48,7 +48,7 @@ export default function Hero() {
   const slide = SLIDES[idx];
 
   return (
-    <section className="py-10 md:py-16 w-full" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <section className="py-8 md:py-12 w-full" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       {/* Top row (brand + language) */}
       <div className="w-full mb-8 flex items-start justify-between">
         <div className="text-left">

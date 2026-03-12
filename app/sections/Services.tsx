@@ -33,8 +33,8 @@ export default function Services() {
 
   return (
     <>
-      <section className="py-10 md:py-16">
-        <h2 className="text-xl font-semibold text-white mb-8">{t("home.dailyGuidanceTitle")}</h2>
+      <section className="py-8 md:py-12">
+        <h2 className="text-xl font-semibold text-white mb-6">{t("home.dailyGuidanceTitle")}</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {items.map((s) => (
           <button
