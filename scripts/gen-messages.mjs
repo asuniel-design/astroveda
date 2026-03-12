@@ -43,6 +43,39 @@ const base = {
   pages: {
     priestServices_title: 'Priest Services',
     priestServices_subtitle: 'Book priests, choose geo-smart kits, and manage bookings.'
+  },
+  funnel: {
+    title: 'Quick Setup',
+    step: 'Step {current} / {total}',
+    labels: {
+      dob: 'Date of Birth',
+      time: 'Time of Birth',
+      city: 'Birth City',
+      confirm: 'Confirm',
+      save: 'Save',
+      done: 'Done'
+    },
+    placeholders: {
+      dob: 'YYYY-MM-DD',
+      time: 'HH:MM',
+      city: 'e.g., Chennai'
+    },
+    help: {
+      confirm: 'Review your details before we generate your results.',
+      save: 'We’ll store this for auto-fill next time.',
+      done: 'Setup complete.'
+    },
+    fields: {
+      dob: 'DOB',
+      time: 'Time',
+      city: 'City'
+    },
+    buttons: {
+      back: 'Back',
+      continue: 'Continue',
+      saveContinue: 'Save & Continue',
+      finish: 'Finish'
+    }
   }
 };
 
@@ -77,7 +110,31 @@ const t = {
       tarot_title: 'टैरो रीडिंग',
       tarot_desc: 'छिपे जवाब जानें'
     },
-    pages: { priestServices_title: 'पुजारी सेवाएँ', priestServices_subtitle: 'पुजारी बुक करें, किट चुनें और बुकिंग मैनेज करें।' }
+    pages: { priestServices_title: 'पुजारी सेवाएँ', priestServices_subtitle: 'पुजारी बुक करें, किट चुनें और बुकिंग मैनेज करें।' },
+    funnel: {
+      title: 'त्वरित सेटअप',
+      step: 'चरण {current} / {total}',
+      labels: {
+        dob: 'जन्म तिथि',
+        time: 'जन्म समय',
+        city: 'जन्म शहर',
+        confirm: 'पुष्टि',
+        save: 'सहेजें',
+        done: 'पूर्ण'
+      },
+      placeholders: {
+        dob: 'YYYY-MM-DD',
+        time: 'HH:MM',
+        city: 'उदा., चेन्नई'
+      },
+      help: {
+        confirm: 'परिणाम बनाने से पहले विवरण जाँच लें।',
+        save: 'अगली बार ऑटो-फिल के लिए इसे सहेजेंगे।',
+        done: 'सेटअप पूरा हुआ।'
+      },
+      fields: { dob: 'DOB', time: 'समय', city: 'शहर' },
+      buttons: { back: 'वापस', continue: 'आगे', saveContinue: 'सहेजें और आगे बढ़ें', finish: 'समाप्त' }
+    }
   },
   te: {
     ui: { language: 'భాష', close: 'మూసివేయి', bookNow: 'బుక్ చేయండి' },
@@ -108,7 +165,31 @@ const t = {
       tarot_title: 'టారోట్ రీడింగ్',
       tarot_desc: 'దాచిన సమాధానాలను తెలుసుకోండి'
     },
-    pages: { priestServices_title: 'పూజారి సేవలు', priestServices_subtitle: 'పూజారులను బుక్ చేయండి, జియో-స్మార్ట్ కిట్లు ఎంచుకోండి, బుకింగ్స్ నిర్వహించండి.' }
+    pages: { priestServices_title: 'పూజారి సేవలు', priestServices_subtitle: 'పూజారులను బుక్ చేయండి, జియో-స్మార్ట్ కిట్లు ఎంచుకోండి, బుకింగ్స్ నిర్వహించండి.' },
+    funnel: {
+      title: 'త్వరిత సెటప్',
+      step: 'దశ {current} / {total}',
+      labels: {
+        dob: 'పుట్టిన తేదీ',
+        time: 'పుట్టిన సమయం',
+        city: 'పుట్టిన నగరం',
+        confirm: 'నిర్ధారించండి',
+        save: 'సేవ్ చేయండి',
+        done: 'పూర్తి'
+      },
+      placeholders: {
+        dob: 'YYYY-MM-DD',
+        time: 'HH:MM',
+        city: 'ఉదా., చెన్నై'
+      },
+      help: {
+        confirm: 'ఫలితాలు సృష్టించే ముందు మీ వివరాలను తనిఖీ చేయండి.',
+        save: 'తర్వాతసారి ఆటో-ఫిల్ కోసం దీన్ని సేవ్ చేస్తాం.',
+        done: 'సెటప్ పూర్తి అయ్యింది.'
+      },
+      fields: { dob: 'DOB', time: 'సమయం', city: 'నగరం' },
+      buttons: { back: 'వెనుకకు', continue: 'కొనసాగించండి', saveContinue: 'సేవ్ చేసి కొనసాగించండి', finish: 'ముగించండి' }
+    }
   },
   bn: {
     ui: { language: 'ভাষা', close: 'বন্ধ', bookNow: 'বুক করুন' },

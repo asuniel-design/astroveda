@@ -40,5 +40,38 @@
   "pages": {
     "priestServices_title": "पुजारी सेवाएँ",
     "priestServices_subtitle": "पुजारी बुक करें, किट चुनें और बुकिंग मैनेज करें।"
+  },
+  "funnel": {
+    "title": "त्वरित सेटअप",
+    "step": "चरण {current} / {total}",
+    "labels": {
+      "dob": "जन्म तिथि",
+      "time": "जन्म समय",
+      "city": "जन्म शहर",
+      "confirm": "पुष्टि",
+      "save": "सहेजें",
+      "done": "पूर्ण"
+    },
+    "placeholders": {
+      "dob": "YYYY-MM-DD",
+      "time": "HH:MM",
+      "city": "उदा., चेन्नई"
+    },
+    "help": {
+      "confirm": "परिणाम बनाने से पहले विवरण जाँच लें।",
+      "save": "अगली बार ऑटो-फिल के लिए इसे सहेजेंगे।",
+      "done": "सेटअप पूरा हुआ।"
+    },
+    "fields": {
+      "dob": "DOB",
+      "time": "समय",
+      "city": "शहर"
+    },
+    "buttons": {
+      "back": "वापस",
+      "continue": "आगे",
+      "saveContinue": "सहेजें और आगे बढ़ें",
+      "finish": "समाप्त"
+    }
   }
 }

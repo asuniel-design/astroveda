@@ -40,5 +40,38 @@
   "pages": {
     "priestServices_title": "पूजारि-सेवाः",
     "priestServices_subtitle": "पूजारिणः आरक्ष्यताम्, किट् चयन्यताम्, आरक्षणानि व्यवस्थाप्यन्ताम्।"
+  },
+  "funnel": {
+    "title": "Quick Setup",
+    "step": "Step {current} / {total}",
+    "labels": {
+      "dob": "Date of Birth",
+      "time": "Time of Birth",
+      "city": "Birth City",
+      "confirm": "Confirm",
+      "save": "Save",
+      "done": "Done"
+    },
+    "placeholders": {
+      "dob": "YYYY-MM-DD",
+      "time": "HH:MM",
+      "city": "e.g., Chennai"
+    },
+    "help": {
+      "confirm": "Review your details before we generate your results.",
+      "save": "We’ll store this for auto-fill next time.",
+      "done": "Setup complete."
+    },
+    "fields": {
+      "dob": "DOB",
+      "time": "Time",
+      "city": "City"
+    },
+    "buttons": {
+      "back": "Back",
+      "continue": "Continue",
+      "saveContinue": "Save & Continue",
+      "finish": "Finish"
+    }
   }
 }

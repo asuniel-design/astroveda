@@ -27,18 +27,22 @@ export default function Hero() {
   }
 
   return (
-    <section className="text-center py-12 md:py-20">
-      <div className="flex items-center justify-between mb-10">
-        <div className="text-left">
-          <div className="text-sm font-semibold text-white/90">{t("brand.name")}</div>
-          <div className="text-xs text-white/50">{t("brand.tagline")}</div>
+    <section className="py-12 md:py-20 flex flex-col items-center justify-center text-center">
+      <div className="w-full mb-10 flex items-start justify-between sm:relative sm:block">
+        <div className="text-left sm:absolute sm:left-0 sm:top-0">
+          <div className="text-sm font-semibold text-white/90 leading-snug">{t("brand.name")}</div>
+          <div className="text-xs text-white/50 leading-snug">{t("brand.tagline")}</div>
         </div>
-        <div className="w-[180px]">
+
+        <div className="w-[180px] sm:absolute sm:right-0 sm:top-0">
           <LanguageSwitcher compact />
         </div>
+
+        {/* Spacer to reserve height so headline remains perfectly centered (sm+) */}
+        <div className="hidden sm:block h-14" />
       </div>
 
-      <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent leading-tight">
+      <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent whitespace-normal break-words">
         {t("hero.headlineA")}<br />
         {t("hero.headlineB")}
       </h1>

@@ -21,7 +21,9 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      {children}
+      <div data-locale={locale} className="min-h-screen">
+        {children}
+      </div>
     </NextIntlClientProvider>
   );
 }

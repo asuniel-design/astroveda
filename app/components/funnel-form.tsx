@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export type BirthData = {
   dob: string; // YYYY-MM-DD
@@ -10,20 +12,33 @@ export type BirthData = {
 
 export default function FunnelForm({
   onComplete,
+  onClose,
 }: {
   onComplete: (data: BirthData) => void;
+  onClose?: () => void;
 }) {
-  const steps = useMemo(
-    () => [
-      { key: "dob", label: "Date of Birth", placeholder: "YYYY-MM-DD" },
-      { key: "time", label: "Time of Birth", placeholder: "HH:MM" },
-      { key: "city", label: "Birth City", placeholder: "e.g., Chennai" },
-      { key: "confirm", label: "Confirm", placeholder: "" },
-      { key: "save", label: "Save", placeholder: "" },
-      { key: "done", label: "Done", placeholder: "" },
-    ],
-    []
-  );
+  const t = useTranslations();
+
+  const steps = [
+    {
+      key: "dob",
+      label: t("funnel.labels.dob"),
+      placeholder: t("funnel.placeholders.dob"),
+    },
+    {
+      key: "time",
+      label: t("funnel.labels.time"),
+      placeholder: t("funnel.placeholders.time"),
+    },
+    {
+      key: "city",
+      label: t("funnel.labels.city"),
+      placeholder: t("funnel.placeholders.city"),
+    },
+    { key: "confirm", label: t("funnel.labels.confirm"), placeholder: "" },
+    { key: "save", label: t("funnel.labels.save"), placeholder: "" },
+    { key: "done", label: t("funnel.labels.done"), placeholder: "" },
+  ] as const;
 
   const [i, setI] = useState(0);
   const [dob, setDob] = useState("");
@@ -31,6 +46,13 @@ export default function FunnelForm({
   const [city, setCity] = useState("");
 
   const step = steps[i];
+
+  function reset() {
+    setI(0);
+    setDob("");
+    setTime("");
+    setCity("");
+  }
 
   function next() {
     setI((x) => Math.min(x + 1, steps.length - 1));
@@ -48,18 +70,32 @@ export default function FunnelForm({
     step.key === "done";
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5">
-      <div className="flex items-center justify-between">
-        <div className="text-sm font-semibold text-white">Quick Setup</div>
-        <div className="text-xs text-white/50">Step {i + 1} / 6</div>
+    <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 relative">
+      {onClose && (
+        <button
+          type="button"
+          aria-label={t("ui.close")}
+          onClick={() => {
+            reset();
+            onClose();
+          }}
+          className="absolute top-3 right-3 w-10 h-10 rounded-full bg-black/40 border border-white/15 text-white/80 hover:text-white hover:bg-black/50 flex items-center justify-center"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      )}
+
+      <div className="flex items-center justify-between pr-12">
+        <div className="text-sm font-semibold text-white">{t("funnel.title")}</div>
+        <div className="text-xs text-white/50">{t("funnel.step", { current: i + 1, total: 6 })}</div>
       </div>
 
       <div className="mt-4">
         <div className="text-white font-semibold">{step.label}</div>
         <div className="text-sm text-white/60 mt-1">
-          {step.key === "confirm" && "Review your details before we generate your results."}
-          {step.key === "save" && "We’ll store this for auto-fill next time."}
-          {step.key === "done" && "Setup complete."}
+          {step.key === "confirm" && t("funnel.help.confirm")}
+          {step.key === "save" && t("funnel.help.save")}
+          {step.key === "done" && t("funnel.help.done")}
         </div>
 
         {step.key === "dob" && (
@@ -89,9 +125,18 @@ export default function FunnelForm({
 
         {(step.key === "confirm" || step.key === "save" || step.key === "done") && (
           <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/80">
-            <div><span className="text-white/50">DOB:</span> {dob || "—"}</div>
-            <div><span className="text-white/50">Time:</span> {time || "—"}</div>
-            <div><span className="text-white/50">City:</span> {city || "—"}</div>
+            <div>
+              <span className="text-white/50">{t("funnel.fields.dob")}: </span>
+              {dob || "—"}
+            </div>
+            <div>
+              <span className="text-white/50">{t("funnel.fields.time")}: </span>
+              {time || "—"}
+            </div>
+            <div>
+              <span className="text-white/50">{t("funnel.fields.city")}: </span>
+              {city || "—"}
+            </div>
           </div>
         )}
       </div>
@@ -102,7 +147,7 @@ export default function FunnelForm({
           disabled={i === 0}
           className="px-3 py-2 rounded-xl text-xs border border-white/10 bg-white/5 text-white/70 disabled:opacity-40"
         >
-          Back
+          {t("funnel.buttons.back")}
         </button>
 
         <button
@@ -125,7 +170,11 @@ export default function FunnelForm({
           disabled={!canNext}
           className="px-4 py-2 rounded-xl bg-gold text-black text-xs font-semibold disabled:opacity-60"
         >
-          {step.key === "save" ? "Save & Continue" : step.key === "done" ? "Finish" : "Continue"}
+          {step.key === "save"
+            ? t("funnel.buttons.saveContinue")
+            : step.key === "done"
+              ? t("funnel.buttons.finish")
+              : t("funnel.buttons.continue")}
         </button>
       </div>
     </div>
