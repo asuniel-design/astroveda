@@ -106,6 +106,7 @@ const base = {
   home: {
     featuredAstrologersTitle: 'Talk to Our Expert Astrologers',
     trustTitle: 'Verified User Experiences',
+    dailyGuidanceTitle: 'Daily Guidance',
     loadingAstrologers: 'Loading astrologers…',
     serverError: 'Server error. Please try again later.',
     remediesTitle: 'Remedies',
@@ -194,6 +195,7 @@ const t = {
     home: {
       featuredAstrologersTitle: 'हमारे विशेषज्ञ ज्योतिषियों से बात करें',
       trustTitle: 'सत्यापित अनुभव',
+      dailyGuidanceTitle: 'दैनिक मार्गदर्शन',
       loadingAstrologers: 'ज्योतिषी लोड हो रहे हैं…',
       serverError: 'सर्वर त्रुटि। कृपया बाद में पुनः प्रयास करें।',
       remediesTitle: 'उपाय',
@@ -279,6 +281,7 @@ const t = {
     home: {
       featuredAstrologersTitle: 'మా నిపుణ జ్యోతిష్యులను సంప్రదించండి',
       trustTitle: 'ధృవీకరించిన వినియోగదారుల అనుభవాలు',
+      dailyGuidanceTitle: 'రోజువారీ మార్గదర్శనం',
       loadingAstrologers: 'జ్యోతిష్యులు లోడ్ అవుతున్నారు…',
       serverError: 'సర్వర్ లోపం. దయచేసి తర్వాత ప్రయత్నించండి.',
       remediesTitle: 'ఉపాయాలు',

@@ -18,7 +18,7 @@ function getLocaleFromPath(pathname: string) {
 const SLIDES = ["s1", "s2", "s3", "s4"] as const;
 
 const HERO_IMAGES: Record<(typeof SLIDES)[number], string> = {
-  s1: "/hero/hero-1.webp",
+  s1: "/hero/hero-1.jpg",
   s2: "/hero/hero-2.jpg",
   s3: "/hero/hero-3.jpg",
   s4: "/hero/hero-4.jpg",

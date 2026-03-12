@@ -33,7 +33,9 @@ export default function Services() {
 
   return (
     <>
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <section className="py-10 md:py-16">
+        <h2 className="text-xl font-semibold text-white mb-8">{t("home.dailyGuidanceTitle")}</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {items.map((s) => (
           <button
             key={s.titleKey}
@@ -52,6 +54,7 @@ export default function Services() {
             <p className="text-sm text-white/60 leading-relaxed">{t(s.descKey)}</p>
           </button>
         ))}
+        </div>
       </section>
 
       <FunnelModal
