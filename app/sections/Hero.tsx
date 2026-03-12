@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 import { Button } from "../components/ui/button";
 import LanguageSwitcher from "../components/language-switcher";
@@ -15,6 +16,13 @@ function getLocaleFromPath(pathname: string) {
 }
 
 const SLIDES = ["s1", "s2", "s3", "s4"] as const;
+
+const HERO_IMAGES: Record<(typeof SLIDES)[number], string> = {
+  s1: "/hero/hero-1.jpg",
+  s2: "/hero/hero-2.jpg",
+  s3: "/hero/hero-3.jpg",
+  s4: "/hero/hero-4.jpg",
+};
 
 export default function Hero() {
   const t = useTranslations();
@@ -97,16 +105,21 @@ export default function Hero() {
                 {/* Right portrait */}
                 <div className="flex justify-center md:justify-end">
                   <div className="relative w-[260px] h-[320px] md:w-[320px] md:h-[360px] rounded-3xl border border-white/10 bg-white/5 backdrop-blur-2xl overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-b from-gold/10 via-transparent to-black/40" />
-                    <div className="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-gold/15 blur-2xl" />
+                    <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-gold/10 via-transparent to-black/40" />
+                    <div className="pointer-events-none absolute -bottom-10 -right-10 z-10 w-64 h-64 rounded-full bg-gold/15 blur-2xl" />
 
-                    {/* Placeholder portrait */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-white/10 to-white/5 border border-white/10" />
-                    </div>
+                    {/* Portrait */}
+                    <Image
+                      src={HERO_IMAGES[slide]}
+                      alt={t(`heroCarousel.${slide}.headline`)}
+                      fill
+                      priority={slide === "s1"}
+                      sizes="(max-width: 768px) 260px, 320px"
+                      className="object-cover z-0"
+                    />
 
                     {/* Verified badge */}
-                    <div className="absolute top-4 right-4">
+                    <div className="absolute top-4 right-4 z-20">
                       <span className="text-[11px] px-3 py-1 rounded-full bg-gold/20 text-gold border border-gold/30">
                         {t("astroCard.verified")}
                       </span>
