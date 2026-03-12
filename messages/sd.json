@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "ٻولي",
+    "close": "بند",
+    "bookNow": "بُڪ ڪريو"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "پريميئم ڪاسميڪ رهنمائي"
+  },
+  "hero": {
+    "headlineA": "ڀارت جي",
+    "headlineB": "بهترين جوتشين سان ڳنڍيو",
+    "subtitle": "پيار، ڪيريئر، صحت وغيره بابت فوري رهنمائي — تصديق ٿيل ويدڪ ماهرن کان.",
+    "cta": "پهرين چيٽ مفت"
+  },
+  "nav": {
+    "chat": "چيٽ",
+    "talk": "ڪال",
+    "kundli": "مفت ڪنڊلي",
+    "matching": "ميچنگ",
+    "horoscope": "روزانو راشيفل",
+    "tarot": "ٽاروٽ",
+    "services": "خدمتون"
+  },
+  "profile": {
+    "guestName": "مهمان",
+    "greeting": "سلام"
+  },
+  "services": {
+    "dailyHoroscope_title": "روزانو راشيفل",
+    "dailyHoroscope_desc": "اڄ تارا ڇا چون ٿا",
+    "kundli_title": "مفت ڪنڊلي",
+    "kundli_desc": "پنهنجو جنم چارٽ حاصل ڪريو",
+    "matching_title": "مطابقت ميچ",
+    "matching_desc": "پنهنجو پرفيڪٽ ميچ ڳوليو",
+    "tarot_title": "ٽاروٽ ريڊنگ",
+    "tarot_desc": "لڪيل جواب کوليو"
+  },
+  "pages": {
+    "priestServices_title": "پجاري خدمتون",
+    "priestServices_subtitle": "پجاري بڪ ڪريو، ڪٽ چونڊيو ۽ بڪنگ سنڀاليو."
+  }
+}

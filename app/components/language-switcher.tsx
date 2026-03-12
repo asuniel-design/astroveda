@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const LANGS: Array<{ code: string; label: string }> = [
   { code: "hi", label: "हिन्दी" },
@@ -34,6 +35,7 @@ function getCurrentLocale(pathname: string) {
 }
 
 export default function LanguageSwitcher({ compact }: { compact?: boolean }) {
+  const t = useTranslations();
   const router = useRouter();
   const pathname = usePathname() || "/";
   const current = getCurrentLocale(pathname);
@@ -41,7 +43,7 @@ export default function LanguageSwitcher({ compact }: { compact?: boolean }) {
   return (
     <div className={compact ? "" : "w-full"}>
       <div className={compact ? "text-[11px] text-white/50 mb-1" : "text-[11px] text-white/50 mb-2"}>
-        Language
+        {t("ui.language")}
       </div>
       <select
         value={current}

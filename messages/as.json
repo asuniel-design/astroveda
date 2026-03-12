@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "ভাষা",
+    "close": "বন্ধ",
+    "bookNow": "বুক কৰক"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "প্ৰিমিয়াম মহাজাগতিক দিশনিৰ্ণয়"
+  },
+  "hero": {
+    "headlineA": "ভাৰতৰ",
+    "headlineB": "সৰ্বোৎকৃষ্ট জ্যোতিষীৰ সৈতে সংযোগ কৰক",
+    "subtitle": "প্ৰেম, কেৰিয়াৰ, স্বাস্থ্য আদি বিষয়ে তৎক্ষণাত দিশনিৰ্ণয়—প্ৰমাণিত বৈদিক বিশেষজ্ঞৰ পৰা।",
+    "cta": "প্ৰথম চাট ফ্ৰী"
+  },
+  "nav": {
+    "chat": "চাট",
+    "talk": "কল",
+    "kundli": "বিনামূলীয়া কুণ্ডলী",
+    "matching": "মেচিং",
+    "horoscope": "দৈনিক ৰাশিফল",
+    "tarot": "টাৰট",
+    "services": "সেৱা"
+  },
+  "profile": {
+    "guestName": "অতিথি",
+    "greeting": "নমস্কাৰ"
+  },
+  "services": {
+    "dailyHoroscope_title": "দৈনিক ৰাশিফল",
+    "dailyHoroscope_desc": "আজিৰ তৰাই কি কয়",
+    "kundli_title": "বিনামূলীয়া কুণ্ডলী",
+    "kundli_desc": "আপোনাৰ জন্ম চাৰ্ট লাভ কৰক",
+    "matching_title": "সামঞ্জস্য মেচ",
+    "matching_desc": "আপোনাৰ পৰিপূৰ্ণ মেচ বিচাৰক",
+    "tarot_title": "টাৰট ৰিডিং",
+    "tarot_desc": "লুকাই থকা উত্তৰ উলিয়াওক"
+  },
+  "pages": {
+    "priestServices_title": "পুৰোহিত সেৱা",
+    "priestServices_subtitle": "পুৰোহিত বুক কৰক, কিট বাছক আৰু বুকিং মেনেজ কৰক।"
+  }
+}

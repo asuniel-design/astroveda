@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "زبان",
+    "close": "بند کریں",
+    "bookNow": "بک کریں"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "پریمیم کاسمک گائیڈنس"
+  },
+  "hero": {
+    "headlineA": "بھارت کے",
+    "headlineB": "بہترین نجومیوں سے جڑیں",
+    "subtitle": "محبت، کیریئر، صحت وغیرہ پر فوری رہنمائی—تصدیق شدہ ویدک ماہرین سے۔",
+    "cta": "پہلی چیٹ مفت"
+  },
+  "nav": {
+    "chat": "چیٹ",
+    "talk": "کال",
+    "kundli": "مفت کنڈلی",
+    "matching": "میچنگ",
+    "horoscope": "روزانہ زائچہ",
+    "tarot": "ٹاروٹ",
+    "services": "خدمات"
+  },
+  "profile": {
+    "guestName": "مہمان",
+    "greeting": "السلام علیکم"
+  },
+  "services": {
+    "dailyHoroscope_title": "روزانہ زائچہ",
+    "dailyHoroscope_desc": "آج ستارے کیا کہتے ہیں",
+    "kundli_title": "مفت کنڈلی",
+    "kundli_desc": "اپنا پیدائشی چارٹ حاصل کریں",
+    "matching_title": "مطابقت میچ",
+    "matching_desc": "اپنا بہترین میچ تلاش کریں",
+    "tarot_title": "ٹاروٹ ریڈنگ",
+    "tarot_desc": "چھپے جواب کھولیں"
+  },
+  "pages": {
+    "priestServices_title": "پجاری خدمات",
+    "priestServices_subtitle": "پجاری بک کریں، کٹس منتخب کریں اور بکنگ مینیج کریں۔"
+  }
+}

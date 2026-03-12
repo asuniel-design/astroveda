@@ -17,7 +17,7 @@ export default async function LocaleLayout({
   const { locale } = params;
   if (!(locales as readonly string[]).includes(locale)) notFound();
 
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

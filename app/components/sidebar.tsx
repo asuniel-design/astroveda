@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   MessageCircle,
   PhoneCall,
@@ -16,15 +17,17 @@ import ReactivePortrait from "./reactive-portrait";
 import { cn } from "../utils/cn";
 
 const NAV = [
-  { href: "/chat", label: "Chat", icon: MessageCircle },
-  { href: "/talk", label: "Talk", icon: PhoneCall },
-  { href: "/kundli", label: "Free Kundli", icon: Sparkles },
-  { href: "/matching", label: "Matching", icon: HeartHandshake },
-  { href: "/horoscope", label: "Daily Horoscope", icon: Sun },
-  { href: "/tarot", label: "Tarot", icon: Wand2 },
+  { href: "/chat", labelKey: "nav.chat", icon: MessageCircle },
+  { href: "/talk", labelKey: "nav.talk", icon: PhoneCall },
+  { href: "/kundli", labelKey: "nav.kundli", icon: Sparkles },
+  { href: "/matching", labelKey: "nav.matching", icon: HeartHandshake },
+  { href: "/horoscope", labelKey: "nav.horoscope", icon: Sun },
+  { href: "/tarot", labelKey: "nav.tarot", icon: Wand2 },
+  { href: "/services", labelKey: "nav.services", icon: Sparkles },
 ] as const;
 
 export default function Sidebar() {
+  const t = useTranslations();
   const pathname = usePathname() || "";
   const parts = pathname.split("/").filter(Boolean);
   const locale = parts[0] || "hi";
@@ -48,8 +51,8 @@ export default function Sidebar() {
           <div className="flex items-center gap-3">
             <ReactivePortrait dob={dob} />
             <div className="min-w-0">
-              <div className="text-sm font-semibold text-white/90 truncate">Guest User</div>
-              <div className="text-xs text-white/50 truncate">Premium Experience</div>
+              <div className="text-sm font-semibold text-white/90 truncate">{t("profile.guestName")}</div>
+              <div className="text-xs text-white/50 truncate">{t("profile.greeting")}</div>
             </div>
           </div>
 
@@ -80,7 +83,7 @@ export default function Sidebar() {
                   )}
                 />
                 <Icon className={cn("h-4 w-4", active ? "text-gold" : "text-white/70 group-hover:text-white")} />
-                <span>{item.label}</span>
+                <span>{t(item.labelKey)}</span>
               </Link>
             );
           })}

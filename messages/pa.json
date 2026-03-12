@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "ਭਾਸ਼ਾ",
+    "close": "ਬੰਦ ਕਰੋ",
+    "bookNow": "ਬੁੱਕ ਕਰੋ"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "ਪ੍ਰੀਮੀਅਮ ਕੋਸਮਿਕ ਗਾਈਡੈਂਸ"
+  },
+  "hero": {
+    "headlineA": "ਭਾਰਤ ਦੇ",
+    "headlineB": "ਸਭ ਤੋਂ ਵਧੀਆ ਜੋਤਿਸ਼ੀਆਂ ਨਾਲ ਜੁੜੋ",
+    "subtitle": "ਪਿਆਰ, ਕਰੀਅਰ, ਸਿਹਤ ਆਦਿ ਲਈ ਤੁਰੰਤ ਮਾਰਗਦਰਸ਼ਨ—ਤਸਦੀਕਸ਼ੁਦਾ ਵੇਦਿਕ ਮਾਹਿਰਾਂ ਤੋਂ।",
+    "cta": "ਪਹਿਲੀ ਚੈਟ ਮੁਫ਼ਤ"
+  },
+  "nav": {
+    "chat": "ਚੈਟ",
+    "talk": "ਕਾਲ",
+    "kundli": "ਮੁਫ਼ਤ ਕੁੰਡਲੀ",
+    "matching": "ਮੇਚਿੰਗ",
+    "horoscope": "ਰੋਜ਼ਾਨਾ ਰਾਸ਼ਿਫਲ",
+    "tarot": "ਟੈਰੋਟ",
+    "services": "ਸੇਵਾਵਾਂ"
+  },
+  "profile": {
+    "guestName": "ਮਿਹਮਾਨ",
+    "greeting": "ਸਤ ਸ੍ਰੀ ਅਕਾਲ"
+  },
+  "services": {
+    "dailyHoroscope_title": "ਰੋਜ਼ਾਨਾ ਰਾਸ਼ਿਫਲ",
+    "dailyHoroscope_desc": "ਅੱਜ ਤਾਰੇ ਕੀ ਕਹਿੰਦੇ ਹਨ",
+    "kundli_title": "ਮੁਫ਼ਤ ਕੁੰਡਲੀ",
+    "kundli_desc": "ਆਪਣਾ ਜਨਮ ਚਾਰਟ ਲਵੋ",
+    "matching_title": "ਅਨੁਕੂਲਤਾ ਮੇਚ",
+    "matching_desc": "ਆਪਣਾ ਪਰਫੈਕਟ ਮੇਚ ਲੱਭੋ",
+    "tarot_title": "ਟੈਰੋਟ ਰੀਡਿੰਗ",
+    "tarot_desc": "ਛੁਪੇ ਜਵਾਬ ਖੋਲ੍ਹੋ"
+  },
+  "pages": {
+    "priestServices_title": "ਪੁਜਾਰੀ ਸੇਵਾਵਾਂ",
+    "priestServices_subtitle": "ਪੁਜਾਰੀ ਬੁੱਕ ਕਰੋ, ਕਿਟ ਚੁਣੋ ਅਤੇ ਬੁਕਿੰਗ ਮੈਨੇਜ ਕਰੋ।"
+  }
+}

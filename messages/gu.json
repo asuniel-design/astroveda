@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "ભાષા",
+    "close": "બંધ",
+    "bookNow": "બુક કરો"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "પ્રીમિયમ બ્રહ્માંડ માર્ગદર્શન"
+  },
+  "hero": {
+    "headlineA": "ભારતના",
+    "headlineB": "શ્રેષ્ઠ જ્યોતિષીઓ સાથે જોડાઓ",
+    "subtitle": "પ્રેમ, કારકિર્દી, આરોગ્ય વગેરે અંગે તાત્કાલિક માર્ગદર્શન મેળવો — ચકાસાયેલા વૈદિક નિષ્ણાતોથી.",
+    "cta": "પહેલી ચેટ મફત"
+  },
+  "nav": {
+    "chat": "ચેટ",
+    "talk": "કૉલ",
+    "kundli": "મફત કુંડળી",
+    "matching": "મેચિંગ",
+    "horoscope": "દૈનિક રાશિફળ",
+    "tarot": "ટેરોટ",
+    "services": "સેવાઓ"
+  },
+  "profile": {
+    "guestName": "મહેમાન",
+    "greeting": "નમસ્તે"
+  },
+  "services": {
+    "dailyHoroscope_title": "દૈનિક રાશિફળ",
+    "dailyHoroscope_desc": "આજે તારાઓ શું કહે છે",
+    "kundli_title": "મફત કુંડળી",
+    "kundli_desc": "તમારો જન્મ ચાર્ટ મેળવો",
+    "matching_title": "સંગતતા મેચ",
+    "matching_desc": "તમારો પરફેક્ટ મેચ શોધો",
+    "tarot_title": "ટેરોટ રીડિંગ",
+    "tarot_desc": "છુપાયેલા જવાબો શોધો"
+  },
+  "pages": {
+    "priestServices_title": "પુજારી સેવાઓ",
+    "priestServices_subtitle": "પુજારી બુક કરો, કિટ પસંદ કરો અને બુકિંગ મેનેજ કરો."
+  }
+}

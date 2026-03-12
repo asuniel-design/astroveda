@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "भाषा",
+    "close": "बंद",
+    "bookNow": "बुक करो"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "प्रीमियम ब्रह्मांडीय मार्गदर्शन"
+  },
+  "hero": {
+    "headlineA": "भारत दे",
+    "headlineB": "सबतों वधिया ज्योतिशियें नै जुड़ो",
+    "subtitle": "प्यार, करियर, सेहत आदे बारे फौरन मार्गदर्शन — सत्यापित वैदिक विशेषज्ञें कन्नै।",
+    "cta": "पहिली चैट फ्री"
+  },
+  "nav": {
+    "chat": "चैट",
+    "talk": "कॉल",
+    "kundli": "मुफ्त कुंडली",
+    "matching": "मैचिंग",
+    "horoscope": "दैनिक राशिफल",
+    "tarot": "टैरो",
+    "services": "सेवा"
+  },
+  "profile": {
+    "guestName": "मेहमान",
+    "greeting": "नमस्कार"
+  },
+  "services": {
+    "dailyHoroscope_title": "दैनिक राशिफल",
+    "dailyHoroscope_desc": "अज्ज तारे की आखदे न",
+    "kundli_title": "मुफ्त कुंडली",
+    "kundli_desc": "अपना जनम चार्ट लाओ",
+    "matching_title": "संगति मैच",
+    "matching_desc": "अपना परफेक्ट मैच लब्भो",
+    "tarot_title": "टैरो रीडिंग",
+    "tarot_desc": "छुपे जवाब खोजो"
+  },
+  "pages": {
+    "priestServices_title": "पुजारी सेवा",
+    "priestServices_subtitle": "पुजारी बुक करो, किट चुनो ते बुकिंग मैनेज करो।"
+  }
+}

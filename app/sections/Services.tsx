@@ -2,13 +2,14 @@
 
 import { useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import FunnelModal from "../components/funnel-modal";
 
 const items = [
-  { icon: "🌟", title: "Daily Horoscope", desc: "Know what stars say today", href: "horoscope" },
-  { icon: "📜", title: "Free Kundli", desc: "Get your birth chart", href: "kundli" },
-  { icon: "💑", title: "Compatibility Match", desc: "Find your perfect match", href: "matching" },
-  { icon: "🎴", title: "Tarot Reading", desc: "Unlock hidden answers", href: "tarot" },
+  { icon: "🌟", titleKey: "services.dailyHoroscope_title", descKey: "services.dailyHoroscope_desc", href: "horoscope" },
+  { icon: "📜", titleKey: "services.kundli_title", descKey: "services.kundli_desc", href: "kundli" },
+  { icon: "💑", titleKey: "services.matching_title", descKey: "services.matching_desc", href: "matching" },
+  { icon: "🎴", titleKey: "services.tarot_title", descKey: "services.tarot_desc", href: "tarot" },
 ];
 
 function getLocaleFromPath(pathname: string) {
@@ -17,6 +18,7 @@ function getLocaleFromPath(pathname: string) {
 }
 
 export default function Services() {
+  const t = useTranslations();
   const router = useRouter();
   const pathname = usePathname() || "/";
   const locale = useMemo(() => getLocaleFromPath(pathname), [pathname]);
@@ -34,7 +36,7 @@ export default function Services() {
       <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {items.map((s) => (
           <button
-            key={s.title}
+            key={s.titleKey}
             className="card p-6 text-center hover:bg-white/10 hover:border-gold/30 transition"
             onClick={() => {
               if (isAuthed()) {
@@ -46,8 +48,8 @@ export default function Services() {
             }}
           >
             <div className="text-3xl mb-3">{s.icon}</div>
-            <h3 className="font-semibold text-white mb-1">{s.title}</h3>
-            <p className="text-sm text-white/60 leading-relaxed">{s.desc}</p>
+            <h3 className="font-semibold text-white mb-1">{t(s.titleKey)}</h3>
+            <p className="text-sm text-white/60 leading-relaxed">{t(s.descKey)}</p>
           </button>
         ))}
       </section>

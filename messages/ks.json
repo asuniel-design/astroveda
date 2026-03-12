@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "زَبان",
+    "close": "بند",
+    "bookNow": "بُک کَرٕو"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "پریمیَم کاسْمِک گایڈَنٛس"
+  },
+  "hero": {
+    "headlineA": "ہِندُس",
+    "headlineB": "بہترین جوتِشیٖن سٕتھ جُڑٕو",
+    "subtitle": "محبت، کیریئر، صحت وغیرہ بابت فوری رہنمائی — تصدیق شدہ ویدک ماہرن ہُنٛد۔",
+    "cta": "پہلا چیٹ مفت"
+  },
+  "nav": {
+    "chat": "چیٹ",
+    "talk": "کال",
+    "kundli": "مفت کنڈلی",
+    "matching": "میچنگ",
+    "horoscope": "روزانہ رشِفل",
+    "tarot": "ٹاروٹ",
+    "services": "سروسز"
+  },
+  "profile": {
+    "guestName": "مہمان",
+    "greeting": "نمستے"
+  },
+  "services": {
+    "dailyHoroscope_title": "روزانہ رشِفل",
+    "dailyHoroscope_desc": "آج ستارے کیا کہنٛد",
+    "kundli_title": "مفت کنڈلی",
+    "kundli_desc": "پنُن جنم چارٹ حاصل کٔرٕو",
+    "matching_title": "موافقت میچ",
+    "matching_desc": "پنُن پرفیکٹ میچ پَتہ کرٕو",
+    "tarot_title": "ٹاروٹ ریڈنگ",
+    "tarot_desc": "لُکایہ جواب کھولٕو"
+  },
+  "pages": {
+    "priestServices_title": "پُجاری سروسز",
+    "priestServices_subtitle": "پُجاری بُک کرٕو، کِٹ چُنٕو تٕہ بُکنگ مَنیج کرٕو۔"
+  }
+}

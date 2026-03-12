@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "ভাষা",
+    "close": "বন্ধ",
+    "bookNow": "বুক করুন"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "প্রিমিয়াম মহাজাগতিক নির্দেশনা"
+  },
+  "hero": {
+    "headlineA": "ভারতের",
+    "headlineB": "সেরা জ্যোতিষিদের সাথে যুক্ত হন",
+    "subtitle": "প্রেম, ক্যারিয়ার, স্বাস্থ্য ইত্যাদিতে তাৎক্ষণিক পরামর্শ নিন—যাচাইকৃত বৈদিক বিশেষজ্ঞদের কাছ থেকে।",
+    "cta": "প্রথম চ্যাট ফ্রি"
+  },
+  "nav": {
+    "chat": "চ্যাট",
+    "talk": "কল",
+    "kundli": "ফ্রি কুণ্ডলী",
+    "matching": "ম্যাচিং",
+    "horoscope": "দৈনিক রাশিফল",
+    "tarot": "টারোট",
+    "services": "সেবা"
+  },
+  "profile": {
+    "guestName": "অতিথি",
+    "greeting": "নমস্কার"
+  },
+  "services": {
+    "dailyHoroscope_title": "দৈনিক রাশিফল",
+    "dailyHoroscope_desc": "আজ তারারা কী বলছে জানুন",
+    "kundli_title": "ফ্রি কুণ্ডলী",
+    "kundli_desc": "আপনার জন্মছক পান",
+    "matching_title": "সামঞ্জস্য ম্যাচ",
+    "matching_desc": "আপনার পারফেক্ট ম্যাচ খুঁজুন",
+    "tarot_title": "টারোট রিডিং",
+    "tarot_desc": "লুকানো উত্তর খুঁজে নিন"
+  },
+  "pages": {
+    "priestServices_title": "পুরোহিত সেবা",
+    "priestServices_subtitle": "পুরোহিত বুক করুন, কিট বাছুন এবং বুকিং ম্যানেজ করুন।"
+  }
+}

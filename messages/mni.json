@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "লোন",
+    "close": "ক্লোজ",
+    "bookNow": "বুক তৌ"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "প্রিমিয়াম কোসমিক গাইডেন্স"
+  },
+  "hero": {
+    "headlineA": "ইন্ডিয়াগী",
+    "headlineB": "বেষ্ট জ্যোতিষীশিংগা কান্না লৌ",
+    "subtitle": "লভ, কেরিয়ার, হেলথ ইত্যাদি বিষয়ে ফ্রেশ পরামর্শ — ভেরিফাইড বৈদিক এক্সপার্টস-সিংগী।",
+    "cta": "ফার্স্ট চ্যাট ফ্রী"
+  },
+  "nav": {
+    "chat": "চ্যাট",
+    "talk": "কল",
+    "kundli": "ফ্রি কুন্ডলী",
+    "matching": "ম্যাচিং",
+    "horoscope": "ডেইলি হোরোস্কোপ",
+    "tarot": "টারোট",
+    "services": "সার্ভিস"
+  },
+  "profile": {
+    "guestName": "গেস্ট",
+    "greeting": "খুরুমজরি"
+  },
+  "services": {
+    "dailyHoroscope_title": "ডেইলি হোরোস্কোপ",
+    "dailyHoroscope_desc": "নঙাই নক্ষত্রশিংনা করিবা",
+    "kundli_title": "ফ্রি কুন্ডলী",
+    "kundli_desc": "নঙাই বার্থ চার্ট ফংউ",
+    "matching_title": "কম্প্যাটিবিলিটি ম্যাচ",
+    "matching_desc": "নঙাই পারফেক্ট ম্যাচ ফংউ",
+    "tarot_title": "টারোট রিডিং",
+    "tarot_desc": "লুকানবা উত্তরশিং খঙউ"
+  },
+  "pages": {
+    "priestServices_title": "প্রিস্ট সার্ভিস",
+    "priestServices_subtitle": "প্রিস্ট বুক তৌ, কিট খল্লু, বুকিং মেনেজ তৌ।"
+  }
+}

@@ -1,10 +1,12 @@
+import { getTranslations } from "next-intl/server";
 import HoroscopeClient from "./ui";
 
-export default function HoroscopePage() {
+export default async function HoroscopePage() {
+  const t = await getTranslations();
+
   return (
     <div className="py-8">
-      <h1 className="text-2xl font-semibold text-white">Daily Horoscope</h1>
-      <p className="text-sm text-white/60 mt-1">Auto-fills from your profile if logged in.</p>
+      <h1 className="text-2xl font-semibold text-white">{t("services.dailyHoroscope_title")}</h1>
       <div className="mt-6">
         <HoroscopeClient />
       </div>

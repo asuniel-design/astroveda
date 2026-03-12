@@ -1,0 +1,44 @@
+{
+  "ui": {
+    "language": "ᱯᱟᱹᱨᱥᱤ",
+    "close": "ᱵᱚᱱᱫ",
+    "bookNow": "ᱵᱩᱠ ᱠᱚ"
+  },
+  "brand": {
+    "name": "AstroVeda",
+    "tagline": "ᱯᱨᱤᱢᱤᱭᱟᱢ ᱠᱳᱥᱢᱤᱠ ᱜᱟᱭᱰᱮᱱᱥ"
+  },
+  "hero": {
+    "headlineA": "ᱵᱷᱟᱨᱚᱛ ᱨᱮ",
+    "headlineB": "ᱟᱹᱫᱤ ᱵᱮᱥᱛ ᱡᱳᱛᱤᱥᱤ ᱥᱟᱶ ᱡᱩᱲᱟᱹᱣ",
+    "subtitle": "ᱞᱟᱹᱵ, ᱠᱮᱨᱤᱭᱟᱨ, ᱥᱮᱦᱛ ᱟᱫᱤ ᱵᱤᱥᱚᱭ ᱨᱮ ᱛᱚᱨᱚᱛ ᱜᱟᱭᱰᱮᱱᱥ — ᱵᱷᱮᱨᱤᱯᱟᱭᱰ ᱵᱮᱫᱤᱠ ᱮᱠᱥᱯᱟᱨᱴ ᱠᱚ ᱴᱷᱮᱱᱛᱮᱭ.",
+    "cta": "ᱯᱩᱦᱞᱟᱹ ᱪᱷᱮᱴ ᱢᱟᱜᱟᱱᱟ"
+  },
+  "nav": {
+    "chat": "ᱪᱷᱮᱴ",
+    "talk": "ᱠᱚᱞ",
+    "kundli": "ᱢᱚᱯᱷᱚᱛ ᱠᱩᱱᱰᱞᱤ",
+    "matching": "ᱢᱮᱪᱤᱝ",
+    "horoscope": "ᱫᱤᱱᱟᱹᱠ ᱨᱟᱥᱤᱯᱷᱚᱞ",
+    "tarot": "ᱴᱟᱨᱳᱴ",
+    "services": "ᱥᱮᱵᱟ"
+  },
+  "profile": {
+    "guestName": "ᱜᱮᱥᱴ",
+    "greeting": "ᱡᱚᱦᱟᱨ"
+  },
+  "services": {
+    "dailyHoroscope_title": "ᱫᱤᱱᱟᱹᱠ ᱨᱟᱥᱤᱯᱷᱚᱞ",
+    "dailyHoroscope_desc": "ᱛᱮᱦᱟᱸ ᱱᱟᱠᱥᱚᱛᱨᱚ ᱪᱮᱫ ᱠᱟᱛᱷᱟ ᱠᱟᱱᱟ",
+    "kundli_title": "ᱢᱚᱯᱷᱚᱛ ᱠᱩᱱᱰᱞᱤ",
+    "kundli_desc": "ᱟᱢᱟᱜ ᱡᱚᱱᱚᱢ ᱪᱟᱨᱴ ᱧᱟᱢ",
+    "matching_title": "ᱠᱚᱢᱯᱮᱴᱤᱵᱤᱞᱤᱴᱤ ᱢᱮᱪ",
+    "matching_desc": "ᱟᱢᱟᱜ ᱯᱟᱨᱯᱷᱮᱠᱴ ᱢᱮᱪ ᱧᱟᱢ",
+    "tarot_title": "ᱴᱟᱨᱳᱴ ᱨᱤᱰᱤᱝ",
+    "tarot_desc": "ᱩᱠᱩᱭ ᱩᱛᱛᱚᱨ ᱧᱟᱢ"
+  },
+  "pages": {
+    "priestServices_title": "ᱯᱩᱡᱟᱹᱨᱤ ᱥᱮᱵᱟ",
+    "priestServices_subtitle": "ᱯᱩᱡᱟᱹᱨᱤ ᱵᱩᱠ ᱠᱚ, ᱠᱤᱴ ᱪᱚᱭᱚᱱ ᱠᱚ ᱟᱨ ᱵᱩᱠᱤᱝ ᱢᱮᱱᱮᱡ ᱠᱚ."
+  }
+}
