@@ -7,7 +7,26 @@
 }
 
 html, body, #__next { height: 100%; }
-body { @apply bg-gradient-to-br from-cosmic-purple via-cosmic-indigo to-[#0b0a1c] text-white antialiased; }
+body {
+  @apply bg-gradient-to-br from-cosmic-purple via-cosmic-indigo to-[#0b0a1c] text-white antialiased;
+  font-family:
+    var(--font-poppins),
+    var(--font-inter),
+    var(--font-noto-deva),
+    var(--font-noto-telugu),
+    var(--font-noto-tamil),
+    var(--font-noto-kannada),
+    var(--font-noto-malayalam),
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif;
+}
+
 
 
 .glass {

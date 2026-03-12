@@ -28,7 +28,7 @@ export const locales = [
   "mwr",
 ] as const;
 
-export const defaultLocale = "hi";
+export const defaultLocale = "en";
 
 export default {
   locales: [...locales],

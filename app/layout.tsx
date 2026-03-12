@@ -1,9 +1,24 @@
 import './globals.css';
-import { Inter, Poppins } from 'next/font/google';
+import {
+  Inter,
+  Poppins,
+  Noto_Sans_Devanagari,
+  Noto_Sans_Telugu,
+  Noto_Sans_Tamil,
+  Noto_Sans_Kannada,
+  Noto_Sans_Malayalam
+} from 'next/font/google';
 import type { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const poppins = Poppins({ subsets: ['latin'], weight: ['400','600','700'], variable: '--font-poppins' });
+
+// Indic script fallback fonts (prevents tofu)
+const notoDeva = Noto_Sans_Devanagari({ subsets: ['devanagari'], variable: '--font-noto-deva' });
+const notoTelugu = Noto_Sans_Telugu({ subsets: ['telugu'], variable: '--font-noto-telugu' });
+const notoTamil = Noto_Sans_Tamil({ subsets: ['tamil'], variable: '--font-noto-tamil' });
+const notoKannada = Noto_Sans_Kannada({ subsets: ['kannada'], variable: '--font-noto-kannada' });
+const notoMalayalam = Noto_Sans_Malayalam({ subsets: ['malayalam'], variable: '--font-noto-malayalam' });
 
 export const metadata: Metadata = {
   title: 'AstroVeda • Cosmic Guidance, Modern UX',
@@ -12,7 +27,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${poppins.variable} ${notoDeva.variable} ${notoTelugu.variable} ${notoTamil.variable} ${notoKannada.variable} ${notoMalayalam.variable}`}
+    >
       <body className="selection:bg-gold/40 text-white">
         <div className="min-h-screen bg-gradient-to-br from-cosmic-purple via-cosmic-indigo to-[#0b0a1c] bg-starfield relative">
           {/* Soft vignette */}
