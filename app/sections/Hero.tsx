@@ -76,19 +76,19 @@ export default function Hero() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                 {/* Left copy */}
                 <div className="text-center md:text-left flex flex-col items-center md:items-start">
-                  <div className="text-xs uppercase tracking-widest text-white/50">
+                  <div className="descender-safe text-xs uppercase tracking-widest text-white/50">
                     {t(`heroCarousel.${slide}.kicker`)}
                   </div>
-                  <h1 className="mt-3 text-4xl md:text-6xl font-bold bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent whitespace-normal break-words text-center md:text-left">
+                  <h1 className="hero-headline mt-3 text-4xl md:text-6xl font-bold bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent whitespace-normal break-words text-center md:text-left">
                     {t(`heroCarousel.${slide}.headline`)}
                   </h1>
-                  <p className="mt-4 text-white/70 max-w-2xl whitespace-normal">
+                  <p className="descender-safe mt-4 text-white/70 max-w-2xl whitespace-normal">
                     {t(`heroCarousel.${slide}.subhead`)}
                   </p>
 
-                  <div className="mt-7 flex items-center gap-3">
+                  <div className="mt-6 flex items-center gap-3">
                     <Button
-                      className="px-8 py-4 text-base"
+                      className="px-9 py-5 text-base leading-none"
                       onClick={() => {
                         if (isAuthed()) router.push(`/${locale}/chat`);
                         else setOpen(true);
@@ -96,7 +96,7 @@ export default function Hero() {
                     >
                       {t("hero.cta")}
                     </Button>
-                    <div className="text-xs text-white/50">
+                    <div className="descender-safe text-xs text-white/50">
                       {t(`heroCarousel.${slide}.note`)}
                     </div>
                   </div>
