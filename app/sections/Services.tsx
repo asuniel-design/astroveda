@@ -31,6 +31,15 @@ export default function Services() {
     return !!window.localStorage.getItem("userId");
   }
 
+  function hasBirthData() {
+    if (typeof window === "undefined") return false;
+    return !!window.localStorage.getItem("birthData");
+  }
+
+  function buildCallbackUrl(nextPath: string) {
+    return `${pathname}?showModal=true&next=${encodeURIComponent(nextPath)}`;
+  }
+
   return (
     <>
       <section className="py-6 md:py-10">
@@ -41,12 +50,21 @@ export default function Services() {
             key={s.titleKey}
             className="card p-6 text-center hover:bg-white/10 hover:border-gold/30 transition"
             onClick={() => {
-              if (isAuthed()) {
-                router.push(`/${locale}/${s.href}`);
-              } else {
-                setTargetHref(`/${locale}/${s.href}`);
-                setOpen(true);
+              const nextPath = `/${locale}/${s.href}`;
+
+              if (!isAuthed()) {
+                const callbackUrl = buildCallbackUrl(nextPath);
+                router.push(`/${locale}/signup?callbackUrl=${encodeURIComponent(callbackUrl)}`);
+                return;
               }
+
+              if (!hasBirthData()) {
+                setTargetHref(nextPath);
+                setOpen(true);
+                return;
+              }
+
+              router.push(nextPath);
             }}
           >
             <div className="text-3xl mb-3">{s.icon}</div>

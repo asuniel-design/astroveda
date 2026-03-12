@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import useSWR from "swr";
 import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, useAnimationControls } from "framer-motion";
 import { fetchJSON } from "@/lib/api";
 
@@ -42,6 +43,21 @@ function formatRemedyPrice(r: Remedy) {
 
 export default function InfiniteRemedyCarousel() {
   const t = useTranslations();
+  const router = useRouter();
+  const pathname = usePathname() || "/";
+  const locale = pathname.split("/").filter(Boolean)[0] || "hi";
+
+  function isAuthed() {
+    if (typeof window === "undefined") return false;
+    return !!window.localStorage.getItem("userId");
+  }
+  function hasBirthData() {
+    if (typeof window === "undefined") return false;
+    return !!window.localStorage.getItem("birthData");
+  }
+  function buildCallbackUrl(nextPath: string) {
+    return `${pathname}?showModal=true&next=${encodeURIComponent(nextPath)}`;
+  }
   const { data, error, isLoading } = useSWR("/api/remedies", fetchJSON, {
     revalidateOnFocus: false,
   });
@@ -138,7 +154,25 @@ export default function InfiniteRemedyCarousel() {
                     <div className="mt-1 text-sm text-white/60 line-clamp-2">
                       {r.description || "—"}
                     </div>
-                    <button className="mt-4 w-full rounded-xl bg-gold text-black text-sm font-semibold py-2 hover:brightness-105 active:brightness-95">
+                    <button
+                      className="mt-4 w-full rounded-xl bg-gold text-black text-sm font-semibold py-2 hover:brightness-105 active:brightness-95"
+                      onClick={() => {
+                        const nextPath = `/${locale}/marketplace`;
+
+                        if (!isAuthed()) {
+                          const callbackUrl = buildCallbackUrl(nextPath);
+                          router.push(`/${locale}/signup?callbackUrl=${encodeURIComponent(callbackUrl)}`);
+                          return;
+                        }
+
+                        if (!hasBirthData()) {
+                          router.push(buildCallbackUrl(nextPath));
+                          return;
+                        }
+
+                        router.push(nextPath);
+                      }}
+                    >
                       {t("home.viewRemedy")} • {formatRemedyPrice(r)}
                     </button>
                   </div>
