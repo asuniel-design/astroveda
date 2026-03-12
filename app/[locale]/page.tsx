@@ -6,8 +6,8 @@ import FeaturedAstrologers from '../sections/FeaturedAstrologers';
 import InfiniteRemedyCarousel from '../components/infinite-remedy-carousel';
 import TrustMarquee from '../components/trust-marquee';
 
-export default async function Page() {
-  const t = await getTranslations();
+export default async function Page({ params }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale: params.locale });
   const year = new Date().getFullYear();
 
   return (
