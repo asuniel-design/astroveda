@@ -10,9 +10,27 @@ async function tryFetch(url: string) {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const country = (req.headers["x-vercel-ip-country"] as string) || (req.headers["cf-ipcountry"] as string) || "IN";
+    const country =
+      (req.headers["x-vercel-ip-country"] as string) ||
+      (req.headers["cf-ipcountry"] as string) ||
+      (req.cookies?.av_country as string) ||
+      "IN";
+
     const isIN = country === "IN";
-    const fxInrPerUsd = 83; // lightweight MVP rate
+
+    // MVP marketing tiers (strictly enforce USD outside India)
+    const USD_OVERRIDES: Record<number, number> = {
+      299: 3.99,
+      349: 3.99,
+      399: 4.99,
+      499: 5.99,
+    };
+
+    const fxInrPerUsd = 83; // fallback conversion
+
+    function inrToUsd(inr: number) {
+      return USD_OVERRIDES[inr] ?? Number((inr / fxInrPerUsd).toFixed(2));
+    }
 
     const fallback = [
       { id: "r1", title: "Celestial Protection", description: "Ward off negativity with Vedic rituals.", price_inr: 299, category: "Remedy" },
@@ -24,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     function mapPricing(arr: any[]) {
       return arr.map((r: any) => {
         const priceInr = Number(r.price_inr ?? r.price ?? r.amount ?? 0) || 0;
-        const display_price = isIN ? priceInr : Number((priceInr / fxInrPerUsd).toFixed(2));
+        const display_price = isIN ? priceInr : inrToUsd(priceInr);
         const display_currency = isIN ? "INR" : "USD";
         const display_symbol = isIN ? "₹" : "$";
         return { ...r, display_price, display_currency, display_symbol };
@@ -53,7 +71,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const remedies = arr.map((r: any) => {
           const priceInr = Number(r.price_inr ?? r.price ?? r.amount ?? 0) || 0;
-          const display_price = isIN ? priceInr : Number((priceInr / fxInrPerUsd).toFixed(2));
+          const display_price = isIN ? priceInr : inrToUsd(priceInr);
           const display_currency = isIN ? "INR" : "USD";
           const display_symbol = isIN ? "₹" : "$";
           return { ...r, display_price, display_currency, display_symbol };

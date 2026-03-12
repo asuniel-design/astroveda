@@ -131,7 +131,7 @@ export default function InfiniteRemedyCarousel() {
                       {r.description || "—"}
                     </div>
                     <button className="mt-4 w-full rounded-xl bg-gold text-black text-sm font-semibold py-2 hover:brightness-105 active:brightness-95">
-                      {t("home.viewRemedy")}
+                      {t("home.viewRemedy")} • {r.display_symbol || "₹"} {r.display_price ?? r.price_inr ?? "—"}
                     </button>
                   </div>
                 </div>

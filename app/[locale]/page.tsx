@@ -13,9 +13,9 @@ export default async function Page() {
     <main className="max-w-6xl mx-auto px-4 md:px-6">
       <Hero />
       <FeaturedAstrologers />
-      <TrustMarquee />
       <Services />
       <InfiniteRemedyCarousel />
+      <TrustMarquee />
       <div className="h-20" />
       <footer className="border-t border-white/10 py-8 text-center text-white/50 text-sm">
         <div className="flex justify-center gap-8 mb-4">

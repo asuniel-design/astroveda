@@ -79,7 +79,7 @@ export default function Hero() {
                   <div className="descender-safe text-xs uppercase tracking-widest text-white/50">
                     {t(`heroCarousel.${slide}.kicker`)}
                   </div>
-                  <h1 className="hero-headline mt-3 text-4xl md:text-6xl font-bold bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent whitespace-normal break-words text-center md:text-left">
+                  <h1 className="hero-headline pb-1 mt-3 text-4xl md:text-6xl font-bold bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent whitespace-normal break-words text-center md:text-left">
                     {t(`heroCarousel.${slide}.headline`)}
                   </h1>
                   <p className="descender-safe mt-4 text-white/70 max-w-2xl whitespace-normal">
@@ -120,7 +120,10 @@ export default function Hero() {
 
                     {/* Verified badge */}
                     <div className="absolute top-4 right-4 z-20">
-                      <span className="text-[11px] px-3 py-1 rounded-full bg-gold/20 text-gold border border-gold/30">
+                      <span
+                        className="text-[11px] px-3 py-1 rounded-full border"
+                        style={{ backgroundColor: "#D4AF37", color: "#311B92", borderColor: "#D4AF37" }}
+                      >
                         {t("astroCard.verified")}
                       </span>
                     </div>

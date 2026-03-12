@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import useSWR from "swr";
 import { useTranslations } from "next-intl";
 import { motion, useAnimationControls } from "framer-motion";
+import { Star, StarHalf } from "lucide-react";
 import { fetchJSON } from "@/lib/api";
 
 type Review = {
@@ -22,6 +23,31 @@ function normalize(r: any, idx: number): Review {
   };
 }
 
+function Stars({ rating }: { rating: number }) {
+  const r = Math.max(0, Math.min(5, rating || 0));
+  const full = Math.floor(r);
+  const frac = r - full;
+  const half = frac >= 0.25 && frac < 0.75;
+  const extraFull = frac >= 0.75 ? 1 : 0;
+
+  const fullCount = Math.min(5, full + extraFull);
+  const halfCount = fullCount < 5 && half ? 1 : 0;
+  const emptyCount = Math.max(0, 5 - fullCount - halfCount);
+
+  return (
+    <div className="flex items-center gap-1 text-yellow-300" aria-label={`${r.toFixed(1)} out of 5`}>
+      {Array.from({ length: fullCount }).map((_, i) => (
+        <Star key={`f-${i}`} className="w-4 h-4 fill-current" />
+      ))}
+      {halfCount === 1 && <StarHalf className="w-4 h-4 fill-current" />}
+      {Array.from({ length: emptyCount }).map((_, i) => (
+        <Star key={`e-${i}`} className="w-4 h-4 text-white/20" />
+      ))}
+      <span className="ml-2 text-xs text-white/50">{r.toFixed(1)}</span>
+    </div>
+  );
+}
+
 export default function TrustMarquee() {
   const t = useTranslations();
   const { data } = useSWR("/api/testimonials", fetchJSON, { revalidateOnFocus: false });
@@ -31,10 +57,10 @@ export default function TrustMarquee() {
     const list = Array.isArray(raw) ? raw.map(normalize) : [];
     if (list.length) return list;
     return [
-      { id: "v1", name: "Asha", review: "Quick, accurate and very helpful.", rating: 5 },
-      { id: "v2", name: "Ravi", review: "Genuine guidance. Felt private and safe.", rating: 5 },
-      { id: "v3", name: "Meera", review: "Great remedies and clear next steps.", rating: 5 },
-      { id: "v4", name: "Kiran", review: "Fast response. Highly recommended.", rating: 5 },
+      { id: "v1", name: "Asha", review: "Quick, accurate and very helpful.", rating: 4.5 },
+      { id: "v2", name: "Ravi", review: "Genuine guidance. Felt private and safe.", rating: 4.2 },
+      { id: "v3", name: "Meera", review: "Great remedies and clear next steps.", rating: 4.8 },
+      { id: "v4", name: "Kiran", review: "Fast response. Highly recommended.", rating: 5.0 },
     ];
   }, [data]);
 
@@ -84,7 +110,7 @@ export default function TrustMarquee() {
               {doubled.map((r, idx) => (
                 <div key={`${r.id}-${idx}`} className="shrink-0 w-[260px] sm:w-[320px]">
                   <div className="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-2xl p-4">
-                    <div className="text-yellow-300 text-sm">{"★★★★★".slice(0, r.rating)}</div>
+                    <Stars rating={r.rating} />
                     <div className="mt-2 text-sm text-white/80 leading-relaxed line-clamp-3">“{r.review}”</div>
                     <div className="mt-3 text-xs text-white/50">— {r.name}</div>
                   </div>

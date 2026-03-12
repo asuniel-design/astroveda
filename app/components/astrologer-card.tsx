@@ -20,7 +20,12 @@ export default function AstrologerCard({ astro }: Props) {
           <div className="flex items-center gap-2">
             <h4 className="font-semibold text-white truncate">{astro.name}</h4>
             {astro.is_verified && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold/20 text-gold border border-gold/30">{t('astroCard.verified')}</span>
+              <span
+                className="text-[10px] px-2 py-0.5 rounded-full border"
+                style={{ backgroundColor: "#D4AF37", color: "#311B92", borderColor: "#D4AF37" }}
+              >
+                {t("astroCard.verified")}
+              </span>
             )}
           </div>
           <div className="text-xs text-white/60 flex items-center gap-2">
