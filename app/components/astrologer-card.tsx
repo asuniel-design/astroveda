@@ -11,7 +11,7 @@ export default function AstrologerCard({ astro }: Props) {
   const t = useTranslations();
   const online = astro.is_online;
   return (
-    <motion.div whileHover={{ y: -4 }} className="card p-4 flex flex-col gap-3">
+    <motion.div whileHover={{ y: -4 }} className="card p-4 flex flex-col gap-3 w-full max-w-[420px]">
       <div className="flex items-start gap-3">
         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold/25 to-gold/10 flex items-center justify-center text-lg font-bold text-gold border border-gold/20">
           {astro.name?.[0] || 'A'}

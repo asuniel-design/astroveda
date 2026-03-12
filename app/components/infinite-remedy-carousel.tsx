@@ -37,7 +37,7 @@ function formatRemedyPrice(r: Remedy) {
   const v = r.display_price ?? r.price_inr;
   const isUsd = r.display_currency === "USD" || symbol === "$";
   if (typeof v !== "number" || !Number.isFinite(v)) return `${symbol} —`;
-  return `${symbol} ${isUsd ? v.toFixed(2) : String(Math.round(v))}`;
+  return `${symbol}${isUsd ? v.toFixed(2) : String(Math.round(v))}`;
 }
 
 export default function InfiniteRemedyCarousel() {
@@ -114,7 +114,7 @@ export default function InfiniteRemedyCarousel() {
         }}
         onMouseLeave={() => setPaused(false)}
       >
-        <div className="relative">
+        <div className="relative marquee-mask">
           {/* left/right fade */}
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-[#0b0a1c]/70 to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#0b0a1c]/70 to-transparent" />

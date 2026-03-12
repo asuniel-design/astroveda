@@ -50,15 +50,14 @@ export default function Hero() {
   return (
     <section className="py-10 md:py-16 w-full" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       {/* Top row (brand + language) */}
-      <div className="w-full mb-8 flex items-start justify-between sm:relative sm:block">
-        <div className="text-left sm:absolute sm:left-0 sm:top-0">
+      <div className="w-full mb-8 flex items-start justify-between">
+        <div className="text-left">
           <div className="text-sm font-semibold text-white/90 leading-snug">{t("brand.name")}</div>
           <div className="text-xs text-white/50 leading-snug">{t("brand.tagline")}</div>
         </div>
-        <div className="w-[180px] sm:absolute sm:right-0 sm:top-0">
+        <div className="w-[180px]">
           <LanguageSwitcher compact />
         </div>
-        <div className="hidden sm:block h-14" />
       </div>
 
       {/* Carousel */}
@@ -88,7 +87,7 @@ export default function Hero() {
 
                   <div className="mt-6 flex items-center gap-3">
                     <Button
-                      className="px-9 py-5 text-base leading-none"
+                      className="px-7 sm:px-9 py-4 sm:py-5 text-sm sm:text-base leading-none whitespace-nowrap"
                       onClick={() => {
                         if (isAuthed()) router.push(`/${locale}/chat`);
                         else setOpen(true);

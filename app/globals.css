@@ -39,6 +39,12 @@ h2 {
   overflow: visible !important;
 }
 
+/* Edge-fade mask for marquee rows */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
 /* Indic locales: keep a taller line-height */
 [data-locale="te"] h1,
 [data-locale="te"] h2,
