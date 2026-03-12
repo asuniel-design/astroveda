@@ -787,6 +787,7 @@ const t = {
 };
 
 const locales = [
+  'en',
   'hi','bn','mr','te','ta','gu','kn','ml','or','pa','as','mai','doi','ks','kok','mni','ne','sa','sat','sd','ur','bho','mwr'
 ];
 

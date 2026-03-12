@@ -2,6 +2,7 @@
 // Locale list: 22 scheduled languages + key dialects (as provided)
 
 export const locales = [
+  "en",
   "hi",
   "bn",
   "mr",

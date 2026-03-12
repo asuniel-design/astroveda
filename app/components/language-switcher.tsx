@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 const LANGS: Array<{ code: string; label: string }> = [
+  { code: "en", label: "English" },
   { code: "hi", label: "हिन्दी" },
   { code: "bn", label: "বাংলা" },
   { code: "mr", label: "मराठी" },
