@@ -10,7 +10,7 @@ export default function FeaturedAstrologers() {
   const list = data?.astrologers || [];
   return (
     <section className="mt-12">
-      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-white">{t('home.featuredAstrologersTitle')}</h2>
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-left text-white">{t('home.featuredAstrologersTitle')}</h2>
       {isLoading && (
         <div className="text-center py-12 text-white/50">{t('home.loadingAstrologers')}</div>
       )}

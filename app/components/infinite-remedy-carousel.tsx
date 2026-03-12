@@ -15,6 +15,7 @@ type Remedy = {
   price?: number;
   display_price?: number;
   display_symbol?: string;
+  display_currency?: string;
   category?: string;
 };
 
@@ -26,8 +27,17 @@ function normalize(r: any): Remedy {
     price_inr: r.price_inr ?? r.price,
     display_price: r.display_price,
     display_symbol: r.display_symbol,
+    display_currency: r.display_currency,
     category: r.category,
   };
+}
+
+function formatRemedyPrice(r: Remedy) {
+  const symbol = r.display_symbol || "₹";
+  const v = r.display_price ?? r.price_inr;
+  const isUsd = r.display_currency === "USD" || symbol === "$";
+  if (typeof v !== "number" || !Number.isFinite(v)) return `${symbol} —`;
+  return `${symbol} ${isUsd ? v.toFixed(2) : String(Math.round(v))}`;
 }
 
 export default function InfiniteRemedyCarousel() {
@@ -122,16 +132,14 @@ export default function InfiniteRemedyCarousel() {
                   <div className="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-2xl p-4">
                     <div className="flex items-center justify-between gap-3">
                       <div className="text-xs text-white/50">{r.category || t("home.remediesTitle")}</div>
-                      <div className="text-xs font-semibold text-gold">
-                        {r.display_symbol || "₹"} {r.display_price ?? r.price_inr ?? "—"}
-                      </div>
+                      <div className="text-xs font-semibold text-gold">{formatRemedyPrice(r)}</div>
                     </div>
                     <div className="mt-2 text-white font-semibold">{r.title || "—"}</div>
                     <div className="mt-1 text-sm text-white/60 line-clamp-2">
                       {r.description || "—"}
                     </div>
                     <button className="mt-4 w-full rounded-xl bg-gold text-black text-sm font-semibold py-2 hover:brightness-105 active:brightness-95">
-                      {t("home.viewRemedy")} • {r.display_symbol || "₹"} {r.display_price ?? r.price_inr ?? "—"}
+                      {t("home.viewRemedy")} • {formatRemedyPrice(r)}
                     </button>
                   </div>
                 </div>

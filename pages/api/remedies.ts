@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { roundUsdCommercial } from "../../lib/currency";
 
 const CONTENT = process.env.NEXT_PUBLIC_CONTENT;
 
@@ -18,18 +19,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const isIN = country === "IN";
 
-    // MVP marketing tiers (strictly enforce USD outside India)
-    const USD_OVERRIDES: Record<number, number> = {
-      299: 3.99,
-      349: 3.99,
-      399: 4.99,
-      499: 5.99,
-    };
-
-    const fxInrPerUsd = 83; // fallback conversion
+    const fxInrPerUsd = 83; // lightweight MVP rate
 
     function inrToUsd(inr: number) {
-      return USD_OVERRIDES[inr] ?? Number((inr / fxInrPerUsd).toFixed(2));
+      return roundUsdCommercial(inr / fxInrPerUsd);
     }
 
     const fallback = [
