@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 type Msg = { role: "user" | "assistant"; text: string };
@@ -23,6 +23,43 @@ export default function ChatClient() {
   ]);
   const [text, setText] = useState("");
   const [sending, setSending] = useState(false);
+
+  // Redeem free chat once per user (server-enforced when DATABASE_URL is set on Vercel)
+  useEffect(() => {
+    (async () => {
+      try {
+        const userId = window.localStorage.getItem("userId");
+        const eligible = window.localStorage.getItem("isFirstChatFree") === "true";
+        const already = window.localStorage.getItem("freeChatRedeemed") === "true";
+        if (!userId || !eligible || already) return;
+
+        const res = await fetch("/api/freechat/redeem", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId }),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data?.ok) {
+          window.localStorage.setItem("freeChatRedeemed", "true");
+          if (data.alreadyUsed) {
+            window.localStorage.setItem("isFirstChatFree", "false");
+            setMessages((m) => [
+              ...m,
+              { role: "assistant", text: "Note: Your free chat has already been used." },
+            ]);
+          } else {
+            setMessages((m) => [
+              ...m,
+              { role: "assistant", text: "✅ Free chat unlocked. You can start your consultation." },
+            ]);
+          }
+        }
+      } catch {
+        // ignore
+      }
+    })();
+  }, []);
 
   async function send() {
     const t = text.trim();
