@@ -73,5 +73,28 @@
       "saveContinue": "సేవ్ చేసి కొనసాగించండి",
       "finish": "ముగించండి"
     }
+  },
+  "home": {
+    "featuredAstrologersTitle": "మా నిపుణ జ్యోతిష్యులను సంప్రదించండి",
+    "loadingAstrologers": "జ్యోతిష్యులు లోడ్ అవుతున్నారు…",
+    "serverError": "సర్వర్ లోపం. దయచేసి తర్వాత ప్రయత్నించండి.",
+    "remediesTitle": "ఉపాయాలు",
+    "remediesSubtitle": "అనంత స్క్రోల్ — నిరంతర లూప్ (హోవర్‌పై ఆగుతుంది)",
+    "loading": "లోడ్ అవుతోంది…",
+    "usingFallback": "ఫాల్బ్యాక్ డేటా ఉపయోగిస్తోంది",
+    "viewRemedy": "ఉపాయం చూడండి",
+    "whatUsersSay": "మా వినియోగదారులు ఏమంటున్నారు",
+    "footer": {
+      "securePayments": "🔒 సురక్షిత చెల్లింపులు",
+      "privateConfidential": "🛡️ వ్యక్తిగతం & గోప్యం",
+      "verifiedExperts": "✓ ధృవీకరించిన నిపుణులు",
+      "rights": "© {year} AstroVeda Connect. అన్ని హక్కులు రిజర్వు."
+    }
+  },
+  "astroCard": {
+    "verified": "ధృవీకరితం",
+    "online": "ఆన్‌లైన్",
+    "offline": "ఆఫ్‌లైన్",
+    "chatNow": "ఇప్పుడే చాట్"
   }
 }

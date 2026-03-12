@@ -73,5 +73,28 @@
       "saveContinue": "सहेजें और आगे बढ़ें",
       "finish": "समाप्त"
     }
+  },
+  "home": {
+    "featuredAstrologersTitle": "हमारे विशेषज्ञ ज्योतिषियों से बात करें",
+    "loadingAstrologers": "ज्योतिषी लोड हो रहे हैं…",
+    "serverError": "सर्वर त्रुटि। कृपया बाद में पुनः प्रयास करें।",
+    "remediesTitle": "उपाय",
+    "remediesSubtitle": "अनंत स्क्रॉल — निर्बाध लूप (होवर पर रुकता है)",
+    "loading": "लोड हो रहा है…",
+    "usingFallback": "फॉलबैक डेटा उपयोग हो रहा है",
+    "viewRemedy": "उपाय देखें",
+    "whatUsersSay": "हमारे उपयोगकर्ता क्या कहते हैं",
+    "footer": {
+      "securePayments": "🔒 सुरक्षित भुगतान",
+      "privateConfidential": "🛡️ निजी और गोपनीय",
+      "verifiedExperts": "✓ सत्यापित विशेषज्ञ",
+      "rights": "© {year} AstroVeda Connect. सर्वाधिकार सुरक्षित।"
+    }
+  },
+  "astroCard": {
+    "verified": "सत्यापित",
+    "online": "ऑनलाइन",
+    "offline": "ऑफलाइन",
+    "chatNow": "चैट करें"
   }
 }

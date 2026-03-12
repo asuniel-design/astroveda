@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import useSWR from "swr";
+import { useTranslations } from "next-intl";
 import { motion, useAnimationControls } from "framer-motion";
 import { fetchJSON } from "@/lib/api";
 
@@ -26,6 +27,7 @@ function normalize(r: any): Remedy {
 }
 
 export default function InfiniteRemedyCarousel() {
+  const t = useTranslations();
   const { data, error, isLoading } = useSWR("/api/remedies", fetchJSON, {
     revalidateOnFocus: false,
   });
@@ -83,11 +85,11 @@ export default function InfiniteRemedyCarousel() {
     <section className="mt-10">
       <div className="flex items-end justify-between gap-4 mb-6">
         <div>
-          <h2 className="text-xl font-semibold text-white">Remedies</h2>
-          <p className="text-sm text-white/60">Infinite scroll — seamless loop (pauses on hover)</p>
+          <h2 className="text-xl font-semibold text-white">{t("home.remediesTitle")}</h2>
+          <p className="text-sm text-white/60">{t("home.remediesSubtitle")}</p>
         </div>
-        {isLoading && <span className="text-xs text-white/50">Loading…</span>}
-        {error && <span className="text-xs text-rose-200">Using fallback data</span>}
+        {isLoading && <span className="text-xs text-white/50">{t("home.loading")}</span>}
+        {error && <span className="text-xs text-rose-200">{t("home.usingFallback")}</span>}
       </div>
 
       <div
@@ -115,15 +117,15 @@ export default function InfiniteRemedyCarousel() {
                 >
                   <div className="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-2xl p-4">
                     <div className="flex items-center justify-between gap-3">
-                      <div className="text-xs text-white/50">{r.category || "Remedy"}</div>
+                      <div className="text-xs text-white/50">{r.category || t("home.remediesTitle")}</div>
                       <div className="text-xs font-semibold text-gold">₹ {r.price_inr ?? "—"}</div>
                     </div>
-                    <div className="mt-2 text-white font-semibold">{r.title || "Untitled"}</div>
+                    <div className="mt-2 text-white font-semibold">{r.title || "—"}</div>
                     <div className="mt-1 text-sm text-white/60 line-clamp-2">
                       {r.description || "—"}
                     </div>
                     <button className="mt-4 w-full rounded-xl bg-gold text-black text-sm font-semibold py-2 hover:brightness-105 active:brightness-95">
-                      View Remedy
+                      {t("home.viewRemedy")}
                     </button>
                   </div>
                 </div>

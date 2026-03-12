@@ -1,11 +1,13 @@
 "use client";
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   astro: any;
 };
 
 export default function AstrologerCard({ astro }: Props) {
+  const t = useTranslations();
   const online = astro.is_online;
   return (
     <motion.div whileHover={{ y: -4 }} className="card p-4 flex flex-col gap-3">
@@ -17,7 +19,7 @@ export default function AstrologerCard({ astro }: Props) {
           <div className="flex items-center gap-2">
             <h4 className="font-semibold text-white truncate">{astro.name}</h4>
             {astro.is_verified && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold/20 text-gold border border-gold/30">Verified</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold/20 text-gold border border-gold/30">{t('astroCard.verified')}</span>
             )}
           </div>
           <div className="text-xs text-white/60 flex items-center gap-2">
@@ -26,7 +28,7 @@ export default function AstrologerCard({ astro }: Props) {
             <span>{astro.languages?.join(' · ')}</span>
           </div>
         </div>
-        <span className={`text-[10px] px-2 py-0.5 rounded-full border ${online ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' : 'bg-white/5 text-white/50 border-white/10'}`}>{online ? 'ONLINE' : 'OFFLINE'}</span>
+        <span className={`text-[10px] px-2 py-0.5 rounded-full border ${online ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' : 'bg-white/5 text-white/50 border-white/10'}`}>{online ? t('astroCard.online') : t('astroCard.offline')}</span>
       </div>
       <div className="flex flex-wrap gap-2">
         {(astro.expertise || []).slice(0,3).map((tag: string) => (
@@ -38,7 +40,7 @@ export default function AstrologerCard({ astro }: Props) {
           href={`chat?astroId=${encodeURIComponent(astro.id)}&astroName=${encodeURIComponent(astro.name || "")}`}
           className="btn-primary w-full text-center"
         >
-          💬 Chat Now
+          💬 {t('astroCard.chatNow')}
         </a>
         <a href="talk" className="glass px-3 rounded-xl border border-white/10 text-center">
           📞

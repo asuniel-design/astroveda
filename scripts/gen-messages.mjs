@@ -76,6 +76,29 @@ const base = {
       saveContinue: 'Save & Continue',
       finish: 'Finish'
     }
+  },
+  home: {
+    featuredAstrologersTitle: 'Talk to Our Expert Astrologers',
+    loadingAstrologers: 'Loading astrologers…',
+    serverError: 'Server error. Please try again later.',
+    remediesTitle: 'Remedies',
+    remediesSubtitle: 'Infinite scroll — seamless loop (pauses on hover)',
+    loading: 'Loading…',
+    usingFallback: 'Using fallback data',
+    viewRemedy: 'View Remedy',
+    whatUsersSay: 'What Our Users Say',
+    footer: {
+      securePayments: '🔒 Secure Payments',
+      privateConfidential: '🛡️ Private & Confidential',
+      verifiedExperts: '✓ Verified Experts',
+      rights: '© {year} AstroVeda Connect. All rights reserved.'
+    }
+  },
+  astroCard: {
+    verified: 'Verified',
+    online: 'ONLINE',
+    offline: 'OFFLINE',
+    chatNow: 'Chat Now'
   }
 };
 
@@ -134,6 +157,29 @@ const t = {
       },
       fields: { dob: 'DOB', time: 'समय', city: 'शहर' },
       buttons: { back: 'वापस', continue: 'आगे', saveContinue: 'सहेजें और आगे बढ़ें', finish: 'समाप्त' }
+    },
+    home: {
+      featuredAstrologersTitle: 'हमारे विशेषज्ञ ज्योतिषियों से बात करें',
+      loadingAstrologers: 'ज्योतिषी लोड हो रहे हैं…',
+      serverError: 'सर्वर त्रुटि। कृपया बाद में पुनः प्रयास करें।',
+      remediesTitle: 'उपाय',
+      remediesSubtitle: 'अनंत स्क्रॉल — निर्बाध लूप (होवर पर रुकता है)',
+      loading: 'लोड हो रहा है…',
+      usingFallback: 'फॉलबैक डेटा उपयोग हो रहा है',
+      viewRemedy: 'उपाय देखें',
+      whatUsersSay: 'हमारे उपयोगकर्ता क्या कहते हैं',
+      footer: {
+        securePayments: '🔒 सुरक्षित भुगतान',
+        privateConfidential: '🛡️ निजी और गोपनीय',
+        verifiedExperts: '✓ सत्यापित विशेषज्ञ',
+        rights: '© {year} AstroVeda Connect. सर्वाधिकार सुरक्षित।'
+      }
+    },
+    astroCard: {
+      verified: 'सत्यापित',
+      online: 'ऑनलाइन',
+      offline: 'ऑफलाइन',
+      chatNow: 'चैट करें'
     }
   },
   te: {
@@ -189,6 +235,29 @@ const t = {
       },
       fields: { dob: 'DOB', time: 'సమయం', city: 'నగరం' },
       buttons: { back: 'వెనుకకు', continue: 'కొనసాగించండి', saveContinue: 'సేవ్ చేసి కొనసాగించండి', finish: 'ముగించండి' }
+    },
+    home: {
+      featuredAstrologersTitle: 'మా నిపుణ జ్యోతిష్యులను సంప్రదించండి',
+      loadingAstrologers: 'జ్యోతిష్యులు లోడ్ అవుతున్నారు…',
+      serverError: 'సర్వర్ లోపం. దయచేసి తర్వాత ప్రయత్నించండి.',
+      remediesTitle: 'ఉపాయాలు',
+      remediesSubtitle: 'అనంత స్క్రోల్ — నిరంతర లూప్ (హోవర్‌పై ఆగుతుంది)',
+      loading: 'లోడ్ అవుతోంది…',
+      usingFallback: 'ఫాల్బ్యాక్ డేటా ఉపయోగిస్తోంది',
+      viewRemedy: 'ఉపాయం చూడండి',
+      whatUsersSay: 'మా వినియోగదారులు ఏమంటున్నారు',
+      footer: {
+        securePayments: '🔒 సురక్షిత చెల్లింపులు',
+        privateConfidential: '🛡️ వ్యక్తిగతం & గోప్యం',
+        verifiedExperts: '✓ ధృవీకరించిన నిపుణులు',
+        rights: '© {year} AstroVeda Connect. అన్ని హక్కులు రిజర్వు.'
+      }
+    },
+    astroCard: {
+      verified: 'ధృవీకరితం',
+      online: 'ఆన్‌లైన్',
+      offline: 'ఆఫ్‌లైన్',
+      chatNow: 'ఇప్పుడే చాట్'
     }
   },
   bn: {
